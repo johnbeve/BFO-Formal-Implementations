@@ -1,0 +1,973 @@
+%*********************************
+%* BFO-FOL Axioms                *
+%*********************************
+
+%******************************
+%* Structural Axioms          *
+%******************************
+
+all x (Continuant(x) -> Entity(x)).
+
+%A1.1.1
+
+all x (IndependentContinuant(x) -> Continuant(x)).
+
+%A1.1.2
+
+all x (MaterialEntity(x) -> IndependentContinuant(x)).
+
+%A1.1.3
+
+all x (Object(x) -> MaterialEntity(x)).
+
+%A1.1.4
+
+all x (ObjectAggregate(x) -> MaterialEntity(x)).
+
+%A1.1.5
+
+all x (FiatObjectAggregate(x) -> MaterialEntity(x)).
+
+%A1.1.6
+
+all x (ImmaterialEntity(x) -> IndependentContinuant(x)).
+
+%A1.1.7
+
+all x (Site(x) -> ImmaterialEntity(x)).
+
+%A1.1.8
+
+all x (ContinuantFiatBoundary(x) -> ImmaterialEntity(x)).
+
+%A1.1.9
+
+all x (ZeroDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)).
+
+%A1.1.10
+
+all x (OneDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)).
+
+%A1.1.11
+
+all x (TwoDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)).
+
+%A1.1.12
+
+all x (ThreeDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)).
+
+%A1.1.13
+
+all x (SpatialRegion(x) -> ImmaterialEntity(x)).
+
+%A1.1.14
+
+all x (ZeroDimensionalSpatialRegion(x) -> SpatialRegion(x)).
+
+%A1.1.15
+
+all x (OneDimensionalSpatialRegion(x) -> SpatialRegion(x)).
+
+%A1.1.16
+
+all x (TwoDimensionalSpatialRegion(x) -> SpatialRegion(x)).
+
+%A1.1.17
+
+all x (ThreeDimensionalSpatialRegion(x) -> SpatialRegion(x)).
+
+%A1.1.18
+
+all x (GenericallyDependentContinuant(x) -> Continuant(x)).
+
+%A1.1.19
+
+all x (SpecificallyDependentContinuant(x) -> Continuant(x)).
+
+%A1.1.20
+
+all x (Quality(x) -> SpecificallyDependentContinuant(x)).
+
+%A1.1.21
+
+all x (RelationalQuality(x) -> Quality(x)).
+
+%A1.1.22
+
+all x (RealizableEntity(x) -> SpecificallyDependentContinuant(x)).
+
+%A1.1.23
+
+all x (Role(x) -> RealizableEntity(x)).
+
+%A1.1.24
+
+all x (Disposition(x) -> RealizableEntity(x)).
+
+%A1.1.25
+
+all x (Function(x) -> Disposition(x)).
+
+%A1.1.26
+
+all x (Occurrent(x) -> Entity(x)).
+
+%A1.1.27
+
+all x (Process(x) -> Occurrent(x)).
+
+%A1.1.28
+
+all x (CompleteProcess(x) -> Process(x)).
+
+%A1.1.29
+
+all x (ProcessProfile(x) -> Process(x)). 
+%A1.1.30
+
+all x (History(x) -> CompleteProcess(x)).
+
+%A1.1.31
+
+all x (ProcessBoundary(x) -> Occurrent(x)).
+
+%A1.1.32
+
+all x (TemporalRegion(x) -> Occurrent(x)).
+
+%A1.1.33
+
+all x (ZeroDimensionalTemporalRegion(x) -> TemporalRegion(x)).
+
+%A1.1.34
+
+all x (OneDimensionalTemporalRegion(x) -> TemporalRegion(x)).
+
+%A1.1.35
+
+all x (SpatiotemporalRegion(x) -> Occurrent(x)).
+
+%A1.1.36
+
+%******************************
+%* Disjointness Axioms        *
+%******************************
+
+all x (Entity(x) -> (Continuant(x) | Occurrent(x))).
+
+%A1.2.1
+
+-(exists x (Continuant(x) & Occurrent(x))).
+
+%A1.2.2
+
+all x (IndependentContinuant(x) -> (-GenericallyDependentContinuant(x) & -SpecificallyDependentContinuant(x))).
+
+%A1.2.3
+
+all x (GenericallyDependentContinuant(x) -> (-IndependentContinuant(x) & -SpecificallyDependentContinuant(x))).
+
+%A1.2.4
+
+all x (SpecificallyDependentContinuant(x) -> (-GenericallyDependentContinuant(x) & -IndependentContinuant(x))).
+
+%A1.2.5
+
+-(exists x (MaterialEntity(x) & ImmaterialEntity(x))).
+
+%A1.2.6
+
+all x (Site(x) -> (-ContinuantFiatBoundary(x) & -SpatialRegion(x))).
+
+%A1.2.7
+
+all x (ContinuantFiatBoundary(x) -> (-SpatialRegion(x) & -Site(x))).
+
+%A1.2.8
+
+all x (SpatialRegion(x) -> (-ContinuantFiatBoundary(x) & -Site(x))).
+
+%A1.2.9
+
+all x (ZeroDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x))).
+
+%A1.2.10
+
+all x (OneDimensionalContinuantFiatBoundary(x) -> (-ZeroDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x))).
+
+%A1.2.11
+
+all x (TwoDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -ZeroDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x))).
+
+%A1.2.12
+
+all x (ThreeDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ZeroDimensionalContinuantFiatBoundary(x))).
+
+%A1.2.13
+
+all x (ZeroDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x))).
+
+%A1.2.14
+
+all x (OneDimensionalSpatialRegion(x) -> (-ZeroDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x))).
+
+%A1.2.15
+
+all x (TwoDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -ZeroDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x))).
+
+%A1.2.16
+
+all x (ThreeDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ZeroDimensionalSpatialRegion(x))).
+
+%A1.2.17
+
+-(exists x (Quality(x) & RealizableEntity(x))).
+
+%A1.2.18
+
+-(exists x (Role(x) & Disposition(x))).
+
+%A1.2.19
+
+all x (Process(x) -> (-ProcessBoundary(x) & -TemporalRegion(x) & -SpatiotemporalRegion(x))).
+
+%A1.2.20
+
+all x (ProcessBoundary(x) -> (-Process(x) & -TemporalRegion(x) & -SpatiotemporalRegion(x))).
+
+%A1.2.21
+
+all x (TemporalRegion(x) -> (-ProcessBoundary(x) & -Process(x) & -SpatiotemporalRegion(x))).
+
+%A1.2.22
+
+all x (SpatiotemporalRegion(x) -> (-ProcessBoundary(x) & -TemporalRegion(x) & -Process(x))).
+
+%A1.2.23
+
+-(exists x (ProcessProfile(x) & CompleteProcess(x))).
+
+%A1.2.24
+
+-(exists x (ZeroDimensionalTemporalRegion(x) & OneDimensionalTemporalRegion(x))).
+
+%A1.2.25
+
+%**********************************
+%Continuant Parthood Definitions  *
+%**********************************
+
+all x all y all t(continuantOverlapAt(x,y,t) <-> (exists z(continuantPartOfAt(z,x,t) & continuantPartOfAt(z,y,t)))).
+  
+%D2.1.1 
+ 
+%all x all y all t(continuantDiscreteFromAt(x,y,t) <-> -continuantOverlapAt(x,y,t)).
+
+%D2.1.2
+ 
+all x all y all t(properContinuantPartOfAt(x,y,t) <-> (continuantPartOfAt(x,y,t) & -(x=y))).
+
+%D2.1.3
+
+all x all y all t(hasContinuantPartAt(x,y,t) <-> continuantPartOfAt(y,x,t)).
+
+%D2.1.4
+
+all x all y all t(hasProperContinuantPartAt(x,y,t) <-> properContinuantPartOfAt(y,x,t)).
+
+%D2.1.5
+
+%**********************************
+%Continuant Parthood Axioms       *
+%**********************************
+
+all x all y all t(continuantPartOfAt(x,y,t) -> (Continuant(x) & Continuant(y) & TemporalRegion(t))).
+
+%A2.1.1 RELATION CONSTRAINT
+
+all x all t ((Continuant(x) & existsAt(x,t))-> continuantPartOfAt(x,x,t)). 
+
+%A2.1.2  REFLEXIVITY 
+
+all x all y all t((continuantPartOfAt(x,y,t) & continuantPartOfAt(y,x,t)) -> x=y).
+
+%A2.1.3 ANTISYMMETRY 
+
+all x all y all z all t ((continuantPartOfAt(x,y,t) & continuantPartOfAt(y,z,t))->continuantPartOfAt(x,z,t)).
+
+%A2.1.4 TRANSITIVITY 
+
+all x all y all t(continuantOverlapAt(x,y,t) -> (exists z (all w(continuantPartOfAt(w,z,t) <-> (continuantPartOfAt(w,x,t) & continuantPartOfAt(w,y,t)))))).
+
+%A2.1.5 WEAK SUPPLEMENTATION 
+
+all x all y all t(continuantOverlapAt(x,y,t) -> (exists z continuantOverlapAt(z,x,t) & continuantOverlapAt(z,y,t) & all w(continuantOverlapAt(w,x,t) & continuantOverlapAt(w,y,t))-> w=z)).
+
+%A2.1.6 UNIQUE PRODUCT 
+
+%**********************************
+%Occurrent Parthood Definitions   *
+%**********************************
+
+all x all y (occurrentOverlap(x,y) <-> (exists z(occurrentPartOf(z,x) & occurrentPartOf(z,y)))).
+  
+%D2.2.1 OVERLAP PART
+ 
+all x all y (properOccurrentPartOf(x,y) <-> (occurrentPartOf(x,y) & -(x=y))).
+
+%D2.2.2 PROPER PART
+
+all x all y (hasOccurrentPart(x,y) <-> occurrentPartOf(y,x)).
+
+%D2.2.3 HAS PART
+
+all x all y (hasProperOccurrentPart(x,y) <-> properOccurrentPartOf(y,x)).
+
+%D2.2.4 HAS PROPER PART
+
+%**********************************
+%Occurrent Parthood Axioms        * 
+%**********************************
+
+all x all y(occurrentPartOf(x,y) -> (Occurrent(x) & Occurrent(y))).
+
+%A2.2.1 RELATION CONSTRAINT
+
+all x all t((TemporalRegion(t) & existsAt(x,t) & Occurrent(x))->occurrentPartOf(x,x)).
+
+%A2.2.2 REFLEXIVITY 
+ 
+all x all y ((occurrentPartOf(x,y) & occurrentPartOf(y,x)) -> x=y).
+
+%A2.2.3 ANTISYMMETRY 
+
+all x all y all z  ((occurrentPartOf(x,y) & occurrentPartOf(y,z))->occurrentPartOf(x,z)). 
+
+%A2.2.4 TRANSITIVITY 
+
+all x all y (properOccurrentPartOf(x,y)-> (exists z(properOccurrentPartOf(z,y) & -(occurrentOverlap(z,x))))).
+
+%A2.2.5 WEAK SUPPLEMENTATION 
+
+all x all y (occurrentOverlap(x,y) -> (exists z (all w(occurrentPartOf(w,z) <-> (occurrentPartOf(w,x) & occurrentPartOf(w,y)))))).
+
+%A2.2.6 UNIQUE PRODUCT
+
+%**********************************
+%ExistsAt Axioms                  * 
+%**********************************
+
+all x all t (existsAt(x,t) -> (Entity(x) & TemporalRegion(t) & (Entity(x) <-> TemporalRegion(t)))).
+
+%A2.3.1 ENTITIES EXIST AT TEMPORAL REGIONS
+
+all x all t (existsAt(x,t) -> TemporalRegion(t)). 
+ 
+%A2.3.2 RANGE CONSTRAINT
+
+%all x all t ((TemporalRegion(t) & existsAt(x,t)) -> all t1((TemporalRegion(t1) & existsAt(t1,t))->(occurrentPartOf(t1,t)))). 
+
+%A2.3.3 EXISTING AT A TEMPORAL REGION INHERITED BY TEMPORAL REGION PARTS (REMOVED)
+
+%**********************************
+%Temporal Region Axioms           * 
+%**********************************
+
+all x all y (occursIn(x,y)<->((Process(x) | ProcessBoundary(x)) & (MaterialEntity(y) | ImmaterialEntity(y)) & exists r(SpatiotemporalRegion(r) & occupiesSpatioTemporalRegion(x,r)) & all t ((TemporalRegion(t) & existsAt(x,t))->existsAt(y,t)) & exists s exists s_1(SpatialRegion(s) & SpatialRegion(s_1) & spatiallyProjectsOntoAt(x,s,t) & occupiesSpatialRegionAt(y,s_1,t) & properContinuantPartOfAt(s,s_1,t)))).
+
+%[XXX-001]
+
+all x all y (occursIn(x,y) <-> containsProcess(y,x)). 
+%[XXX-001]
+
+all x (TemporalRegion(x)->occupiesTemporalRegion(x,x)).
+
+%[137-001] 
+
+all x all t (occupiesTemporalRegion(x,t) <-> hasTemporalOccupant(t,x)). 
+%[XXX-001]
+
+all x (ProcessBoundary(x)->exists y (ZeroDimensionalTemporalRegion(y) & occupiesTemporalRegion(x,y))).
+
+%[085-002] 
+
+all x all t_1 all t_2((SpatiotemporalRegion(x) & ZeroDimensionalTemporalRegion(t_1) & TemporalRegion(t_2) & occurrentPartOf(t_1,t_2) & occupiesTemporalRegion(x,t_2))-> exists r(SpatialRegion(r) & spatiallyProjectsOntoAt(x,r,t_1))).
+
+%[099-002] 
+
+all x all y((TemporalRegion(x) & occurrentPartOf(y,x))->TemporalRegion(y)).
+
+%[101-001] 
+
+all s all t1 all t2 ((SpatiotemporalRegion(s) & TemporalRegion(t1) & TemporalRegion(t2) & temporallyProjectsOnto(s,t1) & temporallyProjectsOnto(s,t2))-> t1=t2). 
+
+%[080-003] SPATIOTEMPORAL PROJECTION TO TEMPORAL REGION IS FUNCTIONAL
+
+all x (Occurrent(x)->exists r(TemporalRegion(r) & occupiesTemporalRegion(x,r))).
+
+%[109-001]
+
+all x all t(occupiesTemporalRegion(x,t)<->(Occurrent(x) & TemporalRegion(t) & exists s (SpatiotemporalRegion(s) & occupiesSpatioTemporalRegion(x,s) & temporallyProjectsOnto(s,t)))).
+
+%[132-001]
+
+all x all y(processProfileOf(x,y)<-> (properOccurrentPartOf(x,y) & exists z exists t(properOccurrentPartOf(z,y) & TemporalRegion(t) & occupiesTemporalRegion(x,t) & occupiesTemporalRegion(y,t) & occupiesTemporalRegion(z,t) & -(exists w (occurrentPartOf(w,x) & occurrentPartOf(w,z)))))).
+
+%[094-005]
+
+all x all t (occupiesTemporalRegion(x,t) -> existsAt(x,t)).
+
+%[XXX-001]
+
+%**********************************
+%Spatiotemporal Region Axioms     * 
+%**********************************
+
+all x all y((SpatiotemporalRegion(x) & occurrentPartOf(y,x))->SpatiotemporalRegion(y)).
+
+%[096-001] 
+
+all x (SpatiotemporalRegion(x)->exists y (TemporalRegion(y) & temporallyProjectsOnto(x,y))).
+
+%[098-001] 
+
+all x (SpatiotemporalRegion(x) -> exists y exists t (SpatialRegion(y) & TemporalRegion(t) & spatiallyProjectsOntoAt(x,y,t))).
+
+%[099-001]
+
+all r(SpatiotemporalRegion(r)-> occupiesSpatioTemporalRegion(r,r)).
+
+%[107-002] 
+
+all x (Occurrent(x)->exists r(SpatiotemporalRegion(r) & occupiesSpatioTemporalRegion(x,r))).
+
+%[108-001] 
+
+all s all r1 all r2 all t((SpatiotemporalRegion(s) & SpatialRegion(r1) & SpatialRegion(r2) & TemporalRegion(t) & spatiallyProjectsOntoAt(s,r1,t) & spatiallyProjectsOntoAt(s,r2,t))-> r1=r2). 
+
+%[081-003] SPATIOTEMPORAL PROJECTION TO TEMPORAL REGION IS FUNCTIONAL
+
+all p all s(occupiesSpatioTemporalRegion(p,s)->(Occurrent(p) & SpatiotemporalRegion(s))).
+
+%[082-003]
+
+%**********************************
+%Site Axioms                      * 
+%**********************************
+
+all x all t ((Site(x) & TemporalRegion(t) & existsAt(x,t))->exists y (ThreeDimensionalSpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[153-001] 
+
+%**********************************
+%Continuant Fiat Boundary Axioms  * 
+%**********************************
+
+all x all t ((TemporalRegion(t) & ContinuantFiatBoundary(x) & existsAt(x,t))-> exists y (SpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x (ContinuantFiatBoundary(x)<->(ImmaterialEntity(x) & exists y exists t(TemporalRegion(t) & SpatialRegion(y) & locatedInAt(x,y,t) & -(exists z exists t1 (SpatialRegion(z) & continuantPartOfAt(z,x,t1)))))).
+%[029-002]
+
+all x (ZeroDimensionalContinuantFiatBoundary(x)<->(ContinuantFiatBoundary(x) & all y all t ((SpatialRegion(y) & TemporalRegion(t) & locatedInAt(x,y,t))-> ZeroDimensionalSpatialRegion(y)))).
+%[031-002]
+
+all x (OneDimensionalContinuantFiatBoundary(x)<->(ContinuantFiatBoundary(x) & all y all t ((SpatialRegion(y) & TemporalRegion(t) & locatedInAt(x,y,t))-> OneDimensionalSpatialRegion(y)))).
+
+%[032-002]
+
+all x (TwoDimensionalContinuantFiatBoundary(x)<->(ContinuantFiatBoundary(x) & all y all t ((SpatialRegion(y) & TemporalRegion(t) & locatedInAt(x,y,t))-> TwoDimensionalSpatialRegion(y)))).
+
+%[033-002]
+
+%******************************************
+%Generically Dependent Continuant Axioms  * 
+%******************************************
+
+all x all y((exists t (TemporalRegion(t) & GenericallyDependentContinuant(x) & genericallyDependsOnAt(x,y,t)))-> all t_1 ((TemporalRegion(t_1) & existsAt(x,t_1))->exists z(genericallyDependsOnAt(x,z,t_1)))).
+
+%[073-001]
+
+all x (GenericallyDependentContinuant(x)<->(Continuant(x) & exists y exists t (IndependentContinuant(y) & TemporalRegion(t) & genericallyDependsOnAt(x,y,t)))).
+
+%[074-001]
+
+all x all y all t ((TemporalRegion(t) & genericallyDependsOnAt(x,y,t))-> exists z (concretizesAt(z,x,t) & specificallyDependsOnAt(z,y,t))).
+
+%[076-001] 
+
+%***********************************
+% Independent Continuant Axioms    *
+%***********************************
+
+all x all t ((IndependentContinuant(x) & TemporalRegion(t) & existsAt(x,t))-> exists y (Entity(y) & specificallyDependsOnAt(y,x,t))).
+
+%[018-002] 
+
+all x all t((IndependentContinuant(x) & TemporalRegion(t))-> exists r(SpatialRegion(r) & locatedInAt(x,r,t))).
+
+%[134-001]
+
+all x all y all t ((Occurrent(x) & IndependentContinuant(y) & TemporalRegion(t) & specificallyDependsOnAt(x,y,t))-> all t_1 ((TemporalRegion(t_1) & existsAt(x,t_1))->specificallyDependsOnAt(x,y,t_1))).
+
+%[015-002] 
+
+all x all y all z all t ((IndependentContinuant(x) & IndependentContinuant(y) & IndependentContinuant(z) & TemporalRegion(t) & continuantPartOfAt(x,y,t) & locatedInAt(y,z,t))->locatedInAt(x,z,t)).
+
+%[048-001] 
+
+all x all y all z all t ((IndependentContinuant(x) & IndependentContinuant(y) & IndependentContinuant(z) & TemporalRegion(t) & locatedInAt(x,y,t) & continuantPartOfAt(y,z,t))->locatedInAt(x,z,t)).
+
+%[049-001]
+
+all x all y all t ((TemporalRegion(t) & concretizesAt(x,y,t))->(SpecificallyDependentContinuant(x) & GenericallyDependentContinuant(y) & exists z (IndependentContinuant(z) & specificallyDependsOnAt(x,z,t) & genericallyDependsOnAt(y,z,t)))).
+
+%[075-002]
+
+all x all r all t((IndependentContinuant(x) & locatedInAt(x,r,t) & TemporalRegion(t) & SpatialRegion(r))-> exists r_1 (SpatialRegion(r_1) & continuantPartOfAt(r_1,r,t) & occupiesSpatialRegionAt(x,r_1,t))).
+
+%[135-001] 
+
+%***********************************
+% Continuant Parthood Axioms       *
+%***********************************
+
+all x all y ((Continuant(x) & exists t(TemporalRegion(t) & continuantPartOfAt(y,x,t)))->Continuant(y)).
+
+%[009-002]
+
+all x (MaterialEntity(x)->exists t(OneDimensionalTemporalRegion(t) & existsAt(x,t))).
+
+%[011-003] 
+
+all x all y all t ((TemporalRegion(t) & Continuant(x) & specificallyDependsOnAt(x,y,t))->all(t_1)((TemporalRegion(t_1) & existsAt(x,t_1))->specificallyDependsOnAt(x,y,t_1))).
+
+%[016-001]
+
+all x (IndependentContinuant(x)<->(Continuant(x) & -(exists y exists t (TemporalRegion(t) & specificallyDependsOnAt(x,y,t))))).
+
+%[017-002]
+
+all x ((Entity(x) & exists y exists t(TemporalRegion(t) & MaterialEntity(y) & continuantPartOfAt(y,x,t)))-> MaterialEntity(x)).
+
+%[020-002] 
+
+all x all y all t ((continuantPartOfAt(x,y,t) & TemporalRegion(t) & IndependentContinuant(x))->locatedInAt(x,y,t)).
+
+%[047-002] 
+
+all x all y all t ((TemporalRegion(t) & hasParticipantAt(x,y,t))->Continuant(y)).
+
+%[088-001] 
+
+all x all t((TemporalRegion(t) & Continuant(x))->continuantPartOfAt(x,x,t)).
+
+%[111-002] 
+
+all x all y ((Continuant(x) & exists t (TemporalRegion(t) & hasContinuantPartAt(y,x,t))->Continuant(y))).
+
+%[126-001]
+
+all x all y all t (locatedInAt(x,y,t)<->(IndependentContinuant(x) & IndependentContinuant(y) & TemporalRegion(t) & exists r_1 exists r_2(occupiesSpatialRegionAt(x,r_1,t) &  occupiesSpatialRegionAt(y,r_2,t) & continuantPartOfAt(r_1,r_2,t)))).
+
+%[045-001]
+
+all x all y all t ((TemporalRegion(t) & specificallyDependsOnAt(x,y,t))->-(exists z (continuantPartOfAt(z,x,t) & continuantPartOfAt(z,y,t)))).
+
+%[012-002]
+
+all x all y all t ((Entity(x) & TemporalRegion(t) & (continuantPartOfAt(y,x,t) | continuantPartOfAt(x,y,t) | occurrentPartOf(x,y) | occurrentPartOf(y,x)))-> -specificallyDependsOnAt(x,y,t)).
+
+%[013-002]
+
+all x all y all r_1 all t ((TemporalRegion(t) & SpatialRegion(r_1) & occupiesSpatialRegionAt(x,r_1,t) & continuantPartOfAt(y,x,t))->exists r_2(SpatialRegion(r_2) & continuantPartOfAt(r_2,r_1,t) & occupiesSpatialRegionAt(y,r_2,t))).
+
+%[043-001]
+
+all x all y all t ((TemporalRegion(t) & hasMaterialBasisAt(x,y,t))->(Disposition(x) & MaterialEntity(y) & exists z(bearerOfAt(z,x,t) & continuantPartOfAt(y,z,t) & exists w(Disposition(w) & (hasDisposition(z,w)->continuantPartOfAt(y,z,t)))))).
+
+%[071-002]
+
+%***********************************
+% Immaterial Entity Axioms         *
+%***********************************
+
+all x (ImmaterialEntity(x)<->(IndependentContinuant(x) & -(exists y exists t(TemporalRegion(t) & MaterialEntity(y) & continuantPartOfAt(y,x,t))))).
+
+%[028-001]
+
+%***********************************
+% Spatial Region Axioms            *
+%***********************************
+
+all x all t ((ContinuantFiatBoundary(x) & TemporalRegion(t) & existsAt(x,t))-> exists y (SpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x all y all t ((SpatialRegion(x) & TemporalRegion(t) & continuantPartOfAt(y,x,t))-> SpatialRegion(y)).
+
+%[036-001] 
+
+all x all t ((MaterialEntity(x) & TemporalRegion(t) & existsAt(x,t))->exists y (ThreeDimensionalSpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x all r all t (occupiesSpatialRegionAt(x,r,t)->(SpatialRegion(r) & IndependentContinuant(x) & TemporalRegion(t))).
+
+%[041-002]
+ 
+all r all t((TemporalRegion(t) & SpatialRegion(r))->occupiesSpatialRegionAt(r,r,t)).
+
+%[042-002] 
+
+%***********************************
+% Object Axioms                    *
+%***********************************
+
+all x (FiatObjectPart(x)->(MaterialEntity(x) & all t ((TemporalRegion(t) & existsAt(x,t))-> exists y (Object(y) & properContinuantPartOfAt(x,y,t))))).
+
+%[027-004]
+
+all x (ObjectAggregate(x)->(MaterialEntity(x) & all t ((TemporalRegion(t) & existsAt(x,t))->exists y exists z(Object(y) & Object(z) & memberPartOfAt(y,x,t) & memberPartOfAt(z,x,t) & -(y=z))) & -(exists w exists t_1 (TemporalRegion(t_1) & memberPartOfAt(w, x,t_1) & -Object(w))))).
+
+%[025-004]
+
+%*******************************************
+% Specifically Dependent Continuant Axioms *
+%*******************************************
+
+all x (SpecificallyDependentContinuant(x)<->(Continuant(x) & all t ((TemporalRegion(t) & existsAt(x,t))-> exists y(IndependentContinuant(y) & -SpatialRegion(y) & specificallyDependsOnAt(x,y,t))))).
+
+%[050-003]
+
+all x (RelationalSpecificallyDependentContinuant(x)<->(SpecificallyDependentContinuant(x) & all t exists y exists z(TemporalRegion(t) & -SpatialRegion(y) & -SpatialRegion(z) & -(y=z) & -(exists d (continuantPartOfAt(d,y,t) & continuantPartOfAt(d,z,t)) & specificallyDependsOnAt(x,y,t) & specificallyDependsOnAt(x,z,t))))).
+
+%[131-004]
+
+all x all y all t (inheresInAt(x,y,t)<->(TemporalRegion(t) & SpecificallyDependentContinuant(x) & IndependentContinuant(y) & -SpatialRegion(y) & specificallyDependsOnAt(x,y,t))).
+
+%[051-002]
+
+all x all y all t (bearerOfAt(x,y,t)<->(TemporalRegion(t) & specificallyDependsOnAt(y,x,t) & IndependentContinuant(x) & -SpatialRegion(x) & existsAt(y,t))).
+
+%[053-004]
+
+all x all y all t ((Continuant(x) & TemporalRegion(t) & specificallyDependsOnAt(x,y,t))->existsAt(x,t)).
+
+%[127-001] 
+
+all x all y all t ((Continuant(x) & TemporalRegion(t) & specificallyDependsOnAt(x,y,t))->existsAt(y,t)).
+
+%[128-001]
+
+all x all y all t ((TemporalRegion(t) & Occurrent(x) & Continuant(y) & specificallyDependsOnAt(x,y,t))-> all t_1((TemporalRegion(t_1) & existsAt(y,t_1))->existsAt(x,t_1))).
+
+%[129-001]  
+
+all x all y all t ((TemporalRegion(t) & Occurrent(x) & Occurrent(y) & specificallyDependsOnAt(x,y,t))-> existsAt(y,t)).
+
+%[130-001] 
+
+all x exists y exists t((TemporalRegion(t) & specificallyDependsOnAt(x,y,t))-> -MaterialEntity(x)).
+
+%[052-001] 
+
+all x all y all z all t ((TemporalRegion(t) & specificallyDependsOnAt(x,y,t) & specificallyDependsOnAt(y,z,t))->specificallyDependsOnAt(x,z,t)).
+
+%[054-002] 
+
+all x all y all t ((hasParticipantAt(x,y,t) & SpecificallyDependentContinuant(y) & TemporalRegion(t))-> exists z (IndependentContinuant(z) & -SpatialRegion(z) & specificallyDependsOnAt(x,z,t) & specificallyDependsOnAt(y,z,t))).
+
+%[090-003] 
+
+all x all y all t ((hasParticipantAt(x,y,t) & GenericallyDependentContinuant(y) & TemporalRegion(t))-> exists z (IndependentContinuant(z) & -SpatialRegion(z) & genericallyDependsOnAt(y,z,t) & specificallyDependsOnAt(x,z,t))).
+
+%[091-003]  
+
+all x (RealizableEntity(x)->(SpecificallyDependentContinuant(x) & exists y (IndependentContinuant(y) & -SpatialRegion(y) & inheresInAt(x,y,t)))).
+
+%[058-002]
+
+all x all y all t ((TemporalRegion(t) & (SpecificallyDependentContinuant(x) | Process(x)) & specificallyDependsOnAt(x,y,t))-> exists z(IndependentContinuant(z) & -SpatialRegion(z) & specificallyDependsOnAt(x,z,t))).
+
+%[136-001] 
+
+%***********************************
+% Quality Axioms                   *
+%***********************************
+
+all x (RelationalQuality(x)<-> exists y exists z exists t(TemporalRegion(t) & IndependentContinuant(y) & IndependentContinuant(z) & qualityOfAt(x,y,t) & qualityOfAt(x,z,t))).
+
+%[057-001]
+
+all x all y all t (qualityOfAt(x,y,t)<->(TemporalRegion(t) & Quality(x) & IndependentContinuant(y) & -SpatialRegion(y) & specificallyDependsOnAt(x,y,t))).
+
+%[056-002]
+
+all x ((exists t(TemporalRegion(t) & existsAt(x,t) & Quality(x)))-> all t_1((TemporalRegion(t_1) & existsAt(x,t_1))->Quality(x))).
+
+%[105-001]
+
+%***********************************
+%* Material Entity Axioms          *
+%***********************************
+
+all x all t ((MaterialEntity(x) & TemporalRegion(t) & existsAt(x,t))->exists y (ThreeDimensionalSpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x ((Entity(x) & exists y exists t(MaterialEntity(y) & TemporalRegion(t) & continuantPartOfAt(x,y,t)))->MaterialEntity(x)).
+
+%[021-002]
+
+%***********************************
+%* Realizable Entity Axioms        *
+%***********************************
+
+all x all t ((RealizableEntity(x) & TemporalRegion(t))->exists y (IndependentContinuant(y) & -SpatialRegion(y) & bearerOfAt(y,x,t))).
+
+%[060-002] 
+
+all x all t ((TemporalRegion(t) & RealizableEntity(x) & existsAt(x,t))-> exists y (MaterialEntity(y) & specificallyDependsOnAt(x,y,t))).
+
+%[063-002] 
+
+all x (Disposition(x)->(RealizableEntity(x) & exists y (MaterialEntity(y) & bearerOfAt(x,y,t)))).
+
+%[062-002]
+
+all x all y all z all t ((RealizableEntity(x) & Process(y) & TemporalRegion(t) & realizesAt(y,x,t) & bearerOfAt(z,x,t))->hasParticipantAt(y,z,t)).
+
+%[106-002] 
+
+all x all y all t (functionOf(x,y,t)<->(TemporalRegion(t) & Function(x) & (IndependentContinuant(y) & -SpatialRegion(y)) & inheresInAt(x,y,t))).
+
+%[067-001]
+
+all x all y all t (hasFunctionAt(x,y,t)<->functionOf(y,x,t)).
+
+%[070-001]
+
+all x all y all t ((TemporalRegion(t) & realizesAt(x,y,t))->(Process(x) & (Disposition(y) | Role(y)) & exists z (MaterialEntity(z) & hasParticipantAt(x,z,t) & bearerOfAt(z,y,t)))).
+
+%[059-003]
+
+all x all y all t (roleOfAt(x,y,t)<->(TemporalRegion(t) & Role(x) & (IndependentContinuant(y) & -SpatialRegion(y)) & inheresInAt(x,y,t))).
+
+%[065-001]
+
+all x all y all t (dispositionOf(x,y,t)<->(TemporalRegion(t) & Disposition(x) & (IndependentContinuant(y) & -SpatialRegion(y)) & inheresInAt(x,y,t))).
+
+%[066-001]
+
+all x all y all t (hasRoleAt(x,y,t)<->roleOfAt(y,x,t)).
+
+%[068-001]
+
+all x all y all t (hasDispositionAt(x,y,t)<->dispositionOf(y,x,t)).
+
+%[069-001]
+
+%***********************************
+% Process Axioms                   *
+%***********************************
+
+%all x (Process(x)<->(Occurrent(x) & exists y (properTemporalPartOf(y,x)))). 
+
+all x (Process(x) -> exists z exists t(TemporalRegion(t) & MaterialEntity(z) & specificallyDependsOnAt(x,z,t))).
+
+%[083-003]
+
+%all x (ProcessBoundary(x)<-> exists y(Process(y) & temporalPartOf(x,y) & -(exists z(properTemporalPartOf(z,x))))).
+
+%[084-001]
+
+all x (ProcessProfile(x)<-> exists y(Process(y) & processProfileOf(x,y))).
+
+%[093-002]
+
+all x all y (hasHistory(x,y)<->historyOf(y,x)). 
+
+%[XXX-001]
+
+all x all y all z((historyOf(x,y) & historyOf(x,z))->(y=z)).
+
+%[XXX-001] 
+
+%***********************************
+% Occurrent Axioms                 *
+%***********************************
+
+all x all y (temporalPartOf(x,y)<->(occurrentPartOf(x,y) & exists t (TemporalRegion(t) & occupiesTemporalRegion(x,t) & all z all t_1((TemporalRegion(t_1) & Occurrent(z) & occupiesTemporalRegion(z,t_1) & occurrentPartOf(t_1,t))->(occurrentPartOf(z,x)<->occurrentPartOf(z,y)))))).
+
+all x all y (temporalPartOf(x,y)<->(occurrentPartOf(x,y) & exists t exists t1(TemporalRegion(t) & TemporalRegion(t1) & occupiesTemporalRegion(x,t) & occupiesTemporalRegion(y,t1) & occurrentPartOf(t,t1) & all z all t_1((TemporalRegion(t_1) & Occurrent(z) & occupiesTemporalRegion(z,t_1) & occurrentPartOf(t_1,t))->(occurrentPartOf(z,x) & occurrentPartOf(z,y)))))).
+
+all x all y (temporalPartOf(x,y)<->(occurrentPartOf(x,y) & exists t exists t1(TemporalRegion(t) & TemporalRegion(t1) & occupiesTemporalRegion(x,t) & occupiesTemporalRegion(y,t1) & occurrentPartOf(t,t1)))).
+
+%[078-003]
+
+all x (Occurrent(x)<-> (Entity(x) & exists y (temporalPartOf(y,x)))).
+
+%[079-001]
+
+all x all y all t ((TemporalRegion(t) & memberPartOfAt(x,y,t))->continuantPartOfAt(x,y,t)).
+
+%[104-001]
+
+all x all y all t ((TemporalRegion(t) & hasParticipantAt(x,y,t))->Occurrent(x)).
+
+%[087-001] 
+
+%***********************************
+% Misc Axioms                      *
+%***********************************
+
+all x all y (properTemporalPartOf(x,y)<->(temporalPartOf(x,y) & -(x=y))).
+
+%[116-001]
+
+all x all y (hasHistory(x,y)<->historyOf(y,x)). 
+
+%[XXX-001]
+
+all x all t ((ContinuantFiatBoundary(x) & TemporalRegion(t) & existsAt(x,t))-> exists y (SpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x all t ((MaterialEntity(x) & TemporalRegion(t) & existsAt(x,t))->exists y (ThreeDimensionalSpatialRegion(y) & occupiesSpatialRegionAt(x,y,t))).
+
+%[XXX-001] 
+
+all x all y all z all t ((TemporalRegion(t) & locatedInAt(x,y,t) & locatedInAt(y,z,t))->locatedInAt(x,z,t)).
+
+%[046-001]
+
+all t(TemporalRegion(t)->occupiesTemporalRegion(t,t)).
+
+%[119-002] 
+
+all x all y all t ((TemporalRegion(t) & specificallyDependsOnAt(x,y,t))->-(exists z(continuantPartOfAt(z,x,t) & continuantPartOfAt(z,y,t)))).
+
+%[012-002]
+
+all x all y all t ((Entity(x) & TemporalRegion(t) & (continuantPartOfAt(y,x,t) | continuantPartOfAt(x,y,t) | occurrentPartOf(x,y) | occurrentPartOf(y,x)))-> -specificallyDependsOnAt(x,y,t)).
+
+%[013-002]
+
+all x all y all t ((TemporalRegion(t) & memberPartOfAt(x,y,t))->continuantPartOfAt(x,y,t)).
+
+%[104-001]
+
+all x all r all t ((TemporalRegion(t) & occupiesSpatialRegionAt(x,r,t))->(SpatialRegion(r) & IndependentContinuant(x))).
+
+%[041-002]
+ 
+all r all t((TemporalRegion(t) & existsAt(r,t) & SpatialRegion(r))->occupiesSpatialRegionAt(r,r,t)).
+
+%[042-002] 
+
+all x all y all r_1 all t ((TemporalRegion(t) & SpatialRegion(r_1) & occupiesSpatialRegionAt(x,r_1,t) & continuantPartOfAt(y,x,t))-> exists(r_2)(SpatialRegion(r_2) & continuantPartOfAt(r_2,r_1,t) & occupiesSpatialRegionAt(y,r_2,t))).
+
+%[043-001]
+
+all x all y all t ((TemporalRegion(t) & hasParticipantAt(x,y,t))->existsAt(y,t)).
+
+%[089-001]
+
+all x all t((TemporalRegion(t) & existsAt(x,t) & Occurrent(x))->occurrentPartOf(x,x)).
+
+%[113-002] 
+
+all x all y(properTemporalPartOf(x,y)-> exists z(properTemporalPartOf(z,y) & -(exists w(temporalPartOf(w,x) & temporalPartOf(w,z))))).
+
+%[117-002] 
+
+%***********************************
+% Before Axioms                    *
+%***********************************
+
+all x (OneDimensionalTemporalRegion(x)-> exists y (TemporalRegion(y) & occurrentPartOf(y,x))).
+
+all x all y((ZeroDimensionalTemporalRegion(x) & -(y=x))->-occurrentPartOf(y,x)).
+
+all x all y (before(x,y) -> (TemporalRegion(x) & TemporalRegion(y))).
+
+%Constraint Axiom 
+
+all x all y all z ((before(x,y) & before(y,z))->before(x,z)).
+
+%before Transitivity
+
+all x -(before(x,x)).
+
+%before Irreflexive
+
+%***********************************
+% Fabian Axioms                    *
+%***********************************
+
+all x all y all t_1 all t_2 ((TemporalRegion(t_1) & TemporalRegion(t_2) & occurrentPartOf(x,y) & occupiesTemporalRegion(x,t_1) & occupiesTemporalRegion(y,t_2))->occurrentPartOf(t_1,t_2)).
+
+%[FN010-001]
+
+all x all y (occurrentPartOf(x,y)-> all t ((TemporalRegion(t) & existsAt(x,t))->existsAt(y,t))).
+
+%[FN003-001]
+
+all x all t ((MaterialEntity(x) & ZeroDimensionalSpatialRegion(t) & existsAt(x,t))->exists r (ThreeDimensionalSpatialRegion(r) & occupiesSpatialRegionAt(x,r,t))).
+
+%[FN]
+
+all x all y all t ((TemporalRegion(t) & continuantPartOfAt(x,y,t))->(existsAt(x,t) & existsAt(y,t))).
+
+%[FN]
+
+all x all r_1 all r_2 all t((SpatialRegion(r_1) & SpatialRegion(r_2) & TemporalRegion(t) & occupiesSpatialRegionAt(x,r_1,t) & occupiesSpatialRegionAt(x,r_2,t))->(r_1=r_2)).
+
+%[FN]
+
+all x all r all t((TemporalRegion(t) & SpatialRegion(r) & occupiesSpatialRegionAt(x,r,t))->existsAt(x,t)).
+
+%[FN]
+
+all x all t ((MaterialEntity(x) & ZeroDimensionalTemporalRegion(t) & existsAt(x,t))->exists r(ThreeDimensionalSpatialRegion(r) & occupiesSpatialRegionAt(x,r,t))).
+
+%[FN020-001]
+
+all x all t ((TemporalRegion(t) & ContinuantFiatBoundary(x))->exists r(SpatialRegion(r) & locatedInAt(x,r,t))).
+
+%[FN]
+
+%***********************************
+% Supplementary Axioms             *
+%***********************************
+
+all x all y (temporalPartOf(x,y) <-> hasTemporalPart(y,x)). 
+%[XXX-001]
+
+all x all y (properTemporalPartOf(x,y) <-> hasProperTemporalPart(y,x)). 
+%[XXX-001]
+
+all x all y all z((temporalPartOf(x,y) & temporalPartOf(y,z)) -> temporalPartOf(x,z)).
+%[XXX-001]
+
+all x all t(existsAt(x,t) <-> duringWhichExists(t,x)).
+%[XXX-001]
+
+%***********************************
+% A-Box                            *
+%***********************************
+
+%Object(a).
+%ObjectAggregate(b).
+%FiatObjectAggregate(c).
+%SpecificallyDependentContinuant(d).
+%GenericallyDependentContinuant(e).
+%ContinuantFiatBoundary(k).
+%ProcessBoundary(f).
+%History(g).
+%ProcessProfile(h).
+%SpatioTemporalRegion(i).
+%TemporalRegion(j). 
+
