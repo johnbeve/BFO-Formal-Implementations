@@ -1,0 +1,844 @@
+%*********************************************
+% BFO-OWL in FOL  Prover9 Input              *
+%*********************************************
+
+%****************************************
+% Object Properties                     *
+%****************************************
+
+%*************************************
+% Generic Dependence                 *
+%*************************************
+
+all x all y all z ((hasSpecificDependentAtSome(x,y) & concretizesAtSome(y,z))-> hasGenericDependentAtSome(x,z)).
+%OWL12.1
+
+all x all y (hasGenericDependentAtSome(x,y) -> ((IndependentContinuant(x) & -(SpatialRegion(x))) & GenericallyDependentContinuant(y))). 
+%OWL12.2
+
+all x all y (hasGenericDependentAtSome(x,y) <-> genericallyDependsOnAtSome(y,x)).
+%OWL12.3
+
+all x all y (genericallyDependsOnAtSome(x,y) -> (GenericallyDependentContinuant(x) & (IndependentContinuant(y) & -SpatialRegion(y)))).
+%OWL12.4
+
+all x all y (genericallyDependsOnAtSome(x,y) <-> (hasGenericDependentAtSome(y,x))). 
+%OWL12.5
+
+%*************************************
+% Role Of                            *
+%*************************************
+
+all x all y (roleOfAtAll(x,y) -> inheresInAtAll(x,y)).
+%OWL13.1
+
+all x all y (roleOfAtAll(x,y) -> ((IndependentContinuant(y) & -(SpatialRegion(y))) & Role(x))). 
+%OWL13.2
+
+all x all y (hasRoleAtAll(x,y) -> bearerOfAtAll(x,y)).
+%OWL13.3
+
+all x all y (hasRoleAtAll(x,y) -> Role(y)). 
+%OWL13.4
+
+all x all y(hasRoleAtSome(x,y) -> bearerOfAtSome(x,y)).
+%OWL13.5
+
+all x all y (hasRoleAtSome(x,y) -> Role(y)). 
+%OWL13.6
+
+%*************************************
+% Located In                         *
+%*************************************
+
+all x all y (locatedInAtAll(x,y) -> (IndependentContinuant(x) & IndependentContinuant(y))).
+ 
+all x all y (locatedInAtAll(x,y) -> locatedInAtSome(x,y)).
+
+all x all y all z ((locatedInAtAll(x,y) & locatedInAtAll(y,z))-> locatedInAtAll(x,z)).
+
+all x all y (hasLocationAtSome(x,y) -> (IndependentContinuant(x) & IndependentContinuant(y))).
+
+all x all y (hasLocationAtSome(x,y) <-> locatedInAtSome(y,x)). 
+
+all x all y (hasLocationAtAll(x,y) -> hasLocationAtSome(x,y)). 
+
+all x all y all z ((hasLocationAtAll(x,y) & hasLocationAtAll(y,z))-> hasLocationAtAll(x,z)). 
+
+all x all y (locatedInAtSome(x,y) -> (IndependentContinuant(x) & IndependentContinuant(y))). 
+
+all x all y (locatedInAtSome(x,y) <-> hasLocationAtSome(y,x)). 
+
+%*************************************
+% Quality Of                         *
+%*************************************
+
+all x all y (QualityOfAt(x,y) -> inheresInAtAll(x,y)).
+
+all x all y (QualityOfAt(x,y) -> Quality(x)). 
+
+all x all y (hasQualityAtAll(x,y) -> bearerOfAtAll(x,y)).
+
+all x all y (hasQualityAtAll(x,y) -> Quality(y)). 
+
+all x all y(hasQualityAtSome(x,y) -> bearerOfAtSome(x,y)).
+
+all x all y (hasQualityAtSome(x,y) -> Quality(y)). 
+
+%*************************************
+% Disposition Of                     *
+%*************************************
+
+all x all y (dispositionOfAtAll(x,y) -> inheresInAtAll(x,y)).
+
+all x all y (dispositionOfAtAll(x,y) -> ((IndependentContinuant(y) & -(SpatialRegion(y))) & Disposition(x))). 
+
+all x all y (hasDispositionAtSome(x,y) -> bearerOfAtSome(x,y)).
+
+all x all y (hasDispositionAtSome(x,y) -> ((IndependentContinuant(x) & -(SpatialRegion(x))) & Disposition(y))).
+
+all x all y (hasDispositionAtAll(x,y) -> bearerOfAtAll(x,y)).
+
+all x all y (hasDispositionAtAll(x,y) -> Disposition(y)).
+
+%*************************************
+% Function Of                        *
+%*************************************
+
+all x all y (functionOfAtAll(x,y) -> inheresInAtAll(x,y)).
+
+all x all y (functionOfAtAll(x,y) -> ((IndependentContinuant(y) & -(SpatialRegion(y))) & Function(x))). 
+
+all x all y (hasFunctionAtAll(x,y) -> bearerOfAtAll(x,y)).
+
+all x all y (hasFunctionAtAll(x,y) -> Function(y)). 
+
+all x all y(hasFunctionAtSome(x,y) -> bearerOfAtSome(x,y)).
+
+all x all y (hasFunctionAtSome(x,y) -> Function(y)). 
+
+%*************************************
+% Bearer Of                          *
+%*************************************
+
+all x all y (bearerOfAtAll(x,y) -> hasSpecificDependentAtAll(x,y)).
+
+all x all y (bearerOfAtAll(x,y) -> ((IndependentContinuant(x) & -(SpatialRegion(x))) & SpecificallyDependentContinuant(y))). 
+
+all x all y (bearerOfAtSome(x,y)-> hasSpecificDependentAtSome(x,y)).
+
+all x all y (bearerOfAtSome(x,y) -> ((IndependentContinuant(x) & -SpatialRegion(x)) & SpecificallyDependentContinuant(y))).
+
+%*************************************
+% Continuant Parthood                *
+%*************************************
+
+all x all y (partOfContinuantAtSome(x,y) -> (Continuant(x) & Continuant(y))).
+%OWL14.1
+
+all x all y (partOfContinuantAtSome(x,y) <-> hasContinuantPartAtSome(y,x)).
+%OWL14.2
+
+all x all y (properPartOfContinuantAtSome(x,y)->(Continuant(x) & Continuant(y))).
+%OWL14.3
+		
+all x all y (properPartOfContinuantAtSome(x,y) -> (partOfContinuantAtSome(x,y) & -(x=y))).	
+%OWL14.4
+
+all x all y (properPartOfContinuantAtSome(x,y) <-> hasProperContinuantPartAtSome(y,x)).
+%OWL14.5
+
+all x all y (partOfContinuantAtAll(x,y) -> partOfContinuantAtSome(x,y)).
+%OWL14.6
+
+all x all y all z ((partOfContinuantAtAll(x,y) & partOfContinuantAtAll(y,z))-> partOfContinuantAtAll(x,z)).
+%OWL14.7
+
+all x all y (partOfContinuantAtAll(x,y) <-> hasContinuantPartAtAllTimesWholeExists(y,x)). 
+%OWL14.8
+
+all x all y (properPartOfContinuantAtAll(x,y) -> (properPartOfContinuantAtSome(x,y) & partOfContinuantAtAll(x,y))).
+%OWL14.9
+
+all x all y all z ((properPartOfContinuantAtAll(x,y) & properPartOfContinuantAtAll(y,z))-> properPartOfContinuantAtAll(x,z)). 
+%OWL14.10
+
+all x all y (continuantPartOfAtAllTimesWholeExists(y,x) <-> hasContinuantPartAtAll(x,y)).
+%OWL14.11
+
+all x all y (continuantPartOfAtAllTimesWholeExists(x,y) -> partOfContinuantAtSome(x,y)).
+%OWL14.12
+
+all x all y all z((continuantPartOfAtAllTimesWholeExists(x,y) & continuantPartOfAtAllTimesWholeExists(y,z))-> continuantPartOfAtAllTimesWholeExists(x,z)).
+%OWL14.13
+
+all x all y(continuantPartOfAtAllTimesWholeExists(x,y) -> (Continuant(x) & Continuant(y))).
+%OWL14.14
+
+all x all y (hasContinuantPartAtAll(x,y)-> hasContinuantPartAtSome(x,y)).
+%OWL14.15
+
+all x all y all z ((hasContinuantPartAtAll(x,y) & hasContinuantPartAtAll(y,z))-> hasContinuantPartAtAll(x,z)).
+%OWL14.16
+
+all x all y (hasContinuantPartAtAll(x,y)<->continuantPartOfAtAllTimesWholeExists(y,x)). 
+%OWL14.17
+
+all x all y (hasProperContinuantPartAtAll(x,y) -> (hasContinuantPartAtAll(x,y))). 
+%OWL14.18
+
+all x all y (hasProperContinuantPartAtAll(x,y) -> (hasProperContinuantPartAtSome(x,y))).    
+%OWL14.19
+
+all x all y all z ((hasProperContinuantPartAtAll(x,y) & hasProperContinuantPartAtAll(y,z)) -> hasProperContinuantPartAtAll(x,z)).
+%OWL14.20
+
+all x all y (hasContinuantPartAtSome(x,y) -> (Continuant(x) & Continuant(y))).
+%OWL14.21
+
+all x all y (hasContinuantPartAtSome(x,y) <-> partOfContinuantAtSome(y,x)).
+%OWL14.22
+
+all x all y (hasProperContinuantPartAtSome(x,y) -> (Continuant(x) & Continuant(y))).
+%OWL14.23
+
+all x all y (hasProperContinuantPartAtSome(x,y) -> hasContinuantPartAtSome(x,y)).
+%OWL14.24
+
+all x all y (hasProperContinuantPartAtSome(x,y) <-> properPartOfContinuantAtSome(y,x)).
+%OWL14.25
+
+all x all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> hasContinuantPartAtSome(x,y)).
+%OWL14.26
+
+all x all y all z((hasContinuantPartAtAllTimesWholeExists(x,y) & hasContinuantPartAtAllTimesWholeExists(y,z))-> hasContinuantPartAtAllTimesWholeExists(x,z)).
+%OWL14.27
+
+all x all y(hasContinuantPartAtAllTimesWholeExists(x,y) -> (Continuant(x) & Continuant(y))).
+%OWL14.28
+
+%**********************************
+% Continuant Parthood  TR         *
+%**********************************
+
+all x all y (partOfContinuantAtSome(x,y) <-> (Continuant(x) & Continuant(y) & exists t (continauntPartOfAt(x,y,t) & existsAt(x,t) & existsAt(y,t)))).
+%TR14.1.1
+
+all x all y (hasContinuantPartAtSome(x,y) <-> (exists t (continauntPartOfAt(y,x,t) & existsAt(x,t) & existsAt(y,t)))).
+%TR14.1.2
+
+all x all y (properPartOfContinuantAtSome(x,y)<->(exists t (properCcontinauntPartOfAt(x,y,t) & existsAt(x,t) & existsAt(y,t)))).
+%TR14.1.3 (TIMEOUT!!!)
+
+all x all y (partOfContinuantAtAll(x,y) <-> (Continuant(x) & Continuant(y) & exists t (continauntPartOfAt(x,y,t) & existsAt(x,t) & existsAt(y,t)) & all t (continauntPartOfAt(x,y,t)))).
+%TR14.1.6
+
+%*************************************
+% Material Basis                     *
+%*************************************
+
+all x all y (hasMaterialBasisAtAll(x,y) -> (Disposition(x) & MaterialEntity(y))).
+
+all x all y (materialBasisOfAtSome(x,y) -> (MaterialEntity(x) & Disposition(y))). 
+
+all x all y (materialBasisOfAtAll(x,y) -> materialBasisOfAtSome(x,y)).
+
+all x all y (materialBasisOfAtAll(x,y) -> (MaterialEntity(x) & Disposition(y))).
+
+%*************************************
+% Specific Dependence                *
+%*************************************
+
+all x all y (specificallyDependsOnAtAll(x,y) -> specificallyDependsOnAtSome(x,y)).
+
+all x all y (hasSpecificDependentAtAll(x,y) -> hasSpecificDependentAtSome(x,y)).
+
+all x all y (specificallyDependsOnAtSome(x,y) -> ((Process(x) | SpecificallyDependentContinuant(x)) & (Process(y) | SpecificallyDependentContinuant(y) | (IndependentContinuant(y) & -SpatialRegion(y))))).
+
+all x all y (specificallyDependsOnAtSome(x,y) -> hasSpecificDependentAtSome(y,x)).
+
+all x all y (hasSpecificDependentAtSome(x,y) -> ((Process(x) | SpecificallyDependentContinuant(x) | (IndependentContinuant(x) & -SpatialRegion(x))) & (Process(y) | SpecificallyDependentContinuant(y)))).
+
+all x all y (hasSpecificDependentAtSome(x,y) <-> specificallyDependsOnAtSome(y,x)). 
+
+%*************************************
+% Projects on Space                  *
+%*************************************
+
+all x all y (projectsOnSpatialRegionAtSome(x,y) -> (SpatiotemporalRegion(x) & SpatialRegion(y))).
+
+all x all y (projectsOnSpatialRegionAtSome(x,y) <-> spatialProjectionOfSpatiotemporalRegionAtSome(y,x)).
+
+all x all y (spatialProjectionOfSpatiotemporalRegionAtSome(x,y) -> (SpatialRegion(x) & SpatiotemporalRegion(y))).
+
+all x all y (spatialProjectionOfSpatiotemporalRegionAtSome(x,y) <-> projectsOnSpatialRegionAtSome(y,x)).
+
+%*************************************
+% Member Parthood                    *
+%*************************************
+
+all x all y (hasMemberPartAtSome(x,y)-> hasContinuantPartAtSome(x,y)).
+
+all x all y (hasMemberPartAtSome(x,y)-> (Continuant(x) & Continuant(y))).
+
+all x all y (hasMemberPartAtSome(x,y) <-> memberPartOfAtSome(y,x)).
+
+all x all y (memberPartOfAtSome(x,y) -> (properPartOfContinuantAtSome(x,y) & partOfContinuantAtSome(x,y))).
+
+all x all y (memberPartOfAtSome(x,y) -> (Continuant(x) & Continuant(y))).
+
+all x all y (memberPartOfAtSome(x,y) <-> hasMemberPartAtSome(y,x)).
+
+all x all y (hasMemberPartAtAll(x,y) -> (hasMemberPartAtSome(x,y) & hasContinuantPartAtAll(x,y) & hasProperContinuantPartAtAll(x,y))).
+
+all x all y (memberPartOfAtAll(x,y) -> (memberPartOfAtSome(x,y) & partOfContinuantAtAll(x,y) & properPartOfContinuantAtAll(x,y))). 
+
+%*************************************
+% Occupies Space                     *
+%*************************************
+
+all x all y (hasSpatialOccupantAtSome(x,y) -> (SpatialRegion(x) & IndependentContinuant(y))).
+
+all x all y (hasSpatialOccupantAtSome(x,y) <-> occupiesSpatialRegionAtSome(y,x)). 
+
+all x all y (occupiesSpatialRegionAtSome(x,y) -> (IndependentContinuant(x) & SpatialRegion(y))).
+
+all x all y (occupiesSpatialRegionAtSome(x,y) <-> hasSpatialOccupantAtSome(y,x)). 
+
+%*************************************
+% Conretizes                         *
+%*************************************
+
+all x all y (concretizedByAtSome(x,y) -> (GenericallyDependentContinuant(x) & SpecificallyDependentContinuant(y))).
+
+all x all y (concretizedByAtSome(x,y) <-> concretizesAtSome(y,x)). 
+
+all x all y (concretizesAtSome(x,y) -> (GenericallyDependentContinuant(y) & SpecificallyDependentContinuant(x))).
+
+all x all y (concretizedByAtSome(y,x) <-> concretizesAtSome(x,y)). 
+
+all x all y (concretizesAtAll(x,y) -> (GenericallyDependentContinuant(y) & SpecificallyDependentContinuant(x))).
+
+all x all y (concretizesAtAll(x,y) -> concretizesAtSome(x,y)).  
+
+all x all y (concretizedByAtAll(x,y) -> concretizedByAtSome(x,y)).
+
+%*************************************
+% Participates                       *
+%*************************************
+
+all x all y (participatesInAtAll(x,y) -> participatesInAtSome(x,y)).
+
+all x all y (hasParticipantAtAll(x,y) -> hasParticipantAtSome(x,y)).
+
+all x all y (hasParticipantAtAll(x,y) -> (Process(x) & (Continuant(y) & -SpatialRegion(y)))).
+
+all x all y (participatesInAtSome(x,y) -> ((Continuant(x) & -SpatialRegion(x)) & Process(y))).
+
+all x all y (participatesInAtSome(x,y) <-> hasParticipantAtSome(y,x)).
+
+all x all y all z((realizes(x,y) & inheresInAtAll(y,z))-> hasParticipantAtSome(x,z)).
+
+all x all y (hasParticipantAtSome(x,y) -> (Process(x) & (Continuant(y) & -SpatialRegion(y)))).
+
+all x all y (hasParticipantAtSome(x,y) <-> participatesInAtSome(y,x)).
+
+%*************************************
+% Inherence                          *
+%*************************************
+
+all x all y (inheresInAtAll(x,y) -> specificallyDependsOnAtAll(x,y)).
+
+all x all y (inheresInAtAll(x,y) -> (SpecificallyDependentContinuant(x) & (IndependentContinuant(y) & -SpatialRegion(y)))).
+
+%*************************************
+% ExistsAt                           *
+%*************************************
+
+all x all t (existsAt(x,t) -> (Entity(x) & TemporalRegion(t))). 
+%OWL2.1
+
+all x all t(existsAt(x,t) <-> duringWhichExists(t,x)).
+%OWL2.2
+
+all x all t(duringWhichExists(t,x) -> (Entity(x) & TemporalRegion(t))).
+%OWL2.3
+
+all x all t(duringWhichExists(t,x) <-> existsAt(x,t)).
+%OWL2.4
+
+%*************************************
+% Realizes                           *
+%*************************************
+
+all x all y (realizedIn(x,y) -> (RealizableEntity(x) & Process(y))). 
+%OWL6.1
+
+all x all y (realizedIn(x,y) <-> realizes(y,x)). 
+%OWL6.2
+
+all x all y (realizes(x,y) -> (Process(x) & RealizableEntity(y))).
+%OWL6.3
+
+all x all y (realizes(x,y) <-> realizedIn(y,x)). 
+%OWL6.4
+
+%*************************************
+% Occurrent Parthood                 *
+%*************************************
+
+all x all y (hasProperOccurrentPart(x,y) -> (hasOccurrentPart(x,y) & -(x=y))). 
+%OWL3.1
+
+all x all y (hasProperOccurrentPart(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL3.2
+
+all x all y	((hasProperOccurrentPart(x,y) & hasProperOccurrentPart(y,z))-> hasProperOccurrentPart(x,z)).
+%OWL3.3
+
+all x all y (hasProperOccurrentPart(x,y) <-> properOccurrentPartOf(y,x)). 
+%OWL3.4
+
+all x all y (hasOccurrentPart(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL3.5
+
+all x all y	((hasOccurrentPart(x,y) & hasOccurrentPart(y,z))-> hasOccurrentPart(x,z)).
+%OWL3.6
+
+all x all y (hasOccurrentPart(x,y) <-> occurrentPartOf(y,x)). 
+%OWL3.7
+
+all x all y (occurrentPartOf(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL3.8
+
+all x all y (occurrentPartOf(x,y) <-> hasOccurrentPart(y,x)).
+%OWL3.9
+
+all x all y all z ((occurrentPartOf(x,y) & occurrentPartOf(y,z))->occurrentPartOf(x,z)). 
+%OWL3.10
+
+all x all y (properOccurrentPartOf(x,y) -> occurrentPartOf(x,y)).
+%OWL3.11
+
+all x all y all z ((properOccurrentPartOf(x,y) & properOccurrentPartOf(y,z) -> properOccurrentPartOf(x,z))).
+%OWL3.12
+
+all x all y(properOccurrentPartOf(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL3.13
+
+all x all y (properOccurrentPartOf(x,y) <-> hasProperOccurrentPart(y,x)). 
+%OWL3.14
+
+%*************************************
+% Projects on Time                   *
+%*************************************
+
+all x all t (projectsOnTemporalRegion(x,t) -> (SpatiotemporalRegion(x) & TemporalRegion(t))). 
+%OWL4.1
+
+all x all t (projectsOnTemporalRegion(x,t) <-> temporalProjectionOfSpatiotemporalRegion(t,x)). 
+%OWL4.2
+
+all x all t (projectsOnTemporalRegion(x,t) -> existsAt(x,t)).
+%OWL4.3
+
+all x all t (temporalProjectionOfSpatiotemporalRegion(t,x) -> duringWhichExists(t,x)).
+%OWL4.4
+
+all x all t (temporalProjectionOfSpatiotemporalRegion(t,x) -> (SpatiotemporalRegion(x) & TemporalRegion(t))). 
+%OWL4.5
+
+all x all t (projectsOnTemporalRegion(x,t) <-> temporalProjectionOfSpatiotemporalRegion(t,x)). 
+%OWL4.6
+
+%*************************************
+% Occupies Time                      *
+%*************************************
+
+all x all t (occupiesTemporalRegion(x,t) -> existsAt(x,t)).
+%OWL7.1
+
+all x all t (occupiesTemporalRegion(x,t) -> (Occurrent(x) & TemporalRegion(t))). 
+%OWL7.2
+
+all x all t (occupiesTemporalRegion(x,t) <-> hasTemporalOccupant(t,x)). 
+%OWL7.3
+
+all x all t (hasTemporalOccupant(t,x) -> duringWhichExists(t,x)).
+%OWL7.4
+
+all x all t (hasTemporalOccupant(t,x) -> (Occurrent(x) & TemporalRegion(t))). 
+%OWL7.5
+
+all x all t (occupiesTemporalRegion(x,t) <-> hasTemporalOccupant(t,x)).
+%OWL7.6
+
+%*************************************
+% Process Profile Of                 *
+%*************************************
+
+all x all y (hasProfile(x,y) -> (Process(x) & ProcessProfile(y))). 
+%OWL8.1
+
+all x all y (hasProfile(x,y) <-> processProfileOf(y,x)). 
+%OWL8.2
+
+all x all y (processProfileOf(x,y) -> (Process(y) & ProcessProfile(x))). 
+%OWL8.3
+
+all x all y (processProfileOf(x,y) <-> hasProfile(y,x)). 
+%OWL8.4
+
+%*************************************
+% Occurs_In                          *
+%*************************************
+
+all x all y (occurs_In(x,y) -> ((Process(x) | ProcessBoundary(x)) & (Site(y) | MaterialEntity(y)))).
+%OWL9.1
+
+all x all y (occurs_In(x,y) <-> contains_Process(y,x)). 
+%OWL9.2
+
+all x all y (contains_Process(x,y) -> ((Process(y) | ProcessBoundary(y)) & (Site(x) | MaterialEntity(x)))).
+%OWL9.3
+
+all x all y (contains_Process(x,y) <-> occurs_In(y,x)). 
+%OWL9.4
+
+%**********************************
+% Occurs_In TR                    *
+%**********************************
+
+all x all y (occurs_In(x,y) <-> (occursIn(x,y) & ((Process(x) | ProcessBoundary(x)) & (Site(y) | MaterialEntity(y))))).
+%TR9.1.1 (occurs_In is occursIn restricted to Sites in second index)
+
+all x all y (contains_Process(x,y) <-> containsProcess(x,y)). 
+%TR9.2.1
+
+%*************************************
+% Temporal Part Of                   *
+%*************************************
+
+all x all y (hasTemporalPart(x,y) -> hasOccurrentPart(x,y)). 
+%OWL5.1
+
+all x all y (hasTemporalPart(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL5.2
+
+all x all y all z((hasTemporalPart(x,y) & hasTemporalPart(y,z)) -> hasTemporalPart(x,z)).
+%OWL5.3
+
+all x all y (hasTemporalPart(x,y) <-> temporalPartOf(y,x)). 
+%OWL5.4
+
+all x all y (temporalPartOf(x,y) -> occurrentPartOf(x,y)). 
+%OWL5.5
+
+all x all y (temporalPartOf(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL5.6
+
+all x all y all z((temporalPartOf(x,y) & temporalPartOf(y,z)) -> temporalPartOf(x,z)).
+%OWL5.7
+
+all x all y (temporalPartOf(x,y) <-> hasTemporalPart(y,x)).
+%OWL5.8
+
+all x all y (properTemporalPartOf(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL5.9
+
+all x all y (properTemporalPartOf(x,y) <-> hasProperTemporalPart(y,x)).
+%OWL5.10
+
+all x all y all z((properTemporalPartOf(x,y) & properTemporalPartOf(y,z))-> properTemporalPartOf(x,z)).
+%OWL5.11
+
+all x all y (properTemporalPartOf(x,y) -> (temporalPartOf(x,y) & properOccurrentPartOf(x,y))).
+%OWL5.12
+
+all x all y (hasProperTemporalPart(x,y) -> (Occurrent(x) & Occurrent(y))).
+%OWL5.13
+
+all x all y (hasProperTemporalPart(x,y) <-> properTemporalPartOf(y,x)).
+%OWL5.14
+
+all x all y all z((hasProperTemporalPart(x,y) & hasProperTemporalPart(y,z))-> hasProperTemporalPart(x,z)).
+%OWL5.15
+
+all x all y (hasProperTemporalPart(x,y) -> (hasTemporalPart(x,y) & hasProperOccurrentPart(x,y))). 
+%OWL5.16
+
+%*************************************
+% Occupies Space Time                *
+%*************************************
+
+all x all y (hasSpatioTemporalOccupant(x,y) -> (SpatiotemporalRegion(x) & Occurrent(y))).
+%OWL10.1
+
+all x all y (hasSpatioTemporalOccupant(x,y) -> occupiesSpatiotemporalRegion(y,x)).
+%OWL10.2
+
+all x all y (occupiesSpatiotemporalRegion(x,y) -> (Occurrent(x) & SpatiotemporalRegion(y))).
+%OWL10.3
+
+all x all y (occupiesSpatiotemporalRegion(x,y) <-> hasSpatioTemporalOccupant(y,x)). 
+%OWL10.4
+
+%*************************************
+% History Of                         *
+%*************************************
+
+all x all y(hasHistory(x,y) -> (contains_Process(x,y) & participatesInAtAll(x,y))).
+%OWL11.1
+
+all x all y (hasHistory(x,y) -> (MaterialEntity(x) & History(y))).
+%OWL11.2
+
+all x all y (hashistory(x,y) <-> historyOf(y,x)).
+%OWL11.3
+
+all x all y all z((hasHistory(x,y) & hasHistory(x,z) -> z=y)).
+%OWL11.4
+
+all x all y all z((hasHistory(x,y) & hasHistory(z,y) -> z=x)). 
+%OWL11.5
+
+all x all y (historyOf(x,y) -> (History(x) & MaterialEntity(y))).
+%OWL11.6
+
+all x all y (historyOf(x,y) -> (occurs_In(x,y) & specificallyDependsOnAtAll(x,y))).
+%OWL11.7
+
+all x all y all z((historyOf(x,y) & historyOf(x,z))-> y=z). 
+%OWL11.8
+
+all x all y all z((historyOf(x,y) & historyOf(z,y))-> x=z). 
+%OWL11.9
+
+all x all y (historyOf(x,y) <-> hasHistory(y,x)). 
+%OWL11.10
+
+%****************************************
+% Classes                               *
+%****************************************
+
+%*************************************
+% Process                            *
+%*************************************
+
+all x (Process(x) -> all y(hasOccurrentPart(x,y) -> (Process(y) | ProcessBoundary(y)))).
+all x (Process(x) -> all z(occurrentPartOf(x,z)->Process(z)) 
+all x (Process(x) -> exists u (MaterialEntity(u) & specificallyDependsOnAtSome(x,u))).  
+
+%*************************************
+% RealizableEntity                   *
+%************************************* 
+
+all x (RealizableEntity(x) -> all y(partOfContinuantAtSome(x,y) -> -Quality(y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z)->-Quality(z))). 
+
+%*************************************
+% Disposition                        *
+%*************************************
+
+all x (Disposition(x) -> all y(partOfContinuantAtSome(x,y) -> -Role(y))).
+all x (Disposition(x) -> all z(continuantPartOfAtAllTimesWholeExists(x,z)->-Role(z))). 
+
+%*************************************
+% Quality                            *
+%*************************************
+
+all x (Quality(x) ->  all y(partOfContinuantAtSome(x,y) -> -RealizableEntity(y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z)->-RealizableEntity(z))). 
+
+%*************************************
+% ZeroDimensionalSpatialRegion       *
+%*************************************
+
+all x (ZeroDimensionalSpatialRegion(x) -> all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> -(TwoDimensionalSpatialRegion(y) | OneDimensionalSpatialRegion(y) | ThreeDimensionalSpatialRegion(y)) & all z(hasContinuantPartAtSome(x,z) -> -(TwoDimensionalSpatialRegion(z) | OneDimensionalSpatialRegion(z) | ThreeDimensionalSpatialRegion(z))))).
+
+%*************************************
+% ContinuantFiatBoundary             *
+%*************************************
+
+all x (ContinuantFiatBoundary(x) -> all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> ContinuantFiatBoundary(y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z) -> -(SpatialRegion(z))) & all u (occupiesSpatialRegionAtSome(x,u) -> (TwoDimensionalSpatialRegion(u) | ZeroDimensionalSpatialRegion(u) | OneDimensionalSpatialRegion(u))) & all w(hasContinuantPartAtSome(x,w) -> ContinuantFiatBoundary(w)) & all v(partOfContinuantAtSome(x,v) -> -SpatialRegion(v))). 
+
+%*************************************
+% ImmaterialEntity                   *
+%*************************************
+
+all x (ImmaterialEntity(x) -> all y (hasContinuantPartAtSome(x,y) -> ImmaterialEntity(y)) & all z (hasContinuantPartAtAllTimesWholeExists(x,z) -> -MaterialEntity(z)) & all u (hasContinuantPartAtAllTimesWholeExists(x,u) -> ImmaterialEntity(u)) & all w(hasContinuantPartAtSome(x,w) -> -MaterialEntity(w))).
+
+%***************************************
+% OneDimensionalContinuantFiatBoundary *
+%***************************************
+
+all x (OneDimensionalContinuantFiatBoundary(x) -> all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> -(TwoDimensionalContinuantFiatBoundary(y))) & all z(hasContinuantPartAtSome(x,z) -> -(TwoDimensionalContinuantFiatBoundary(z)))). 
+
+%*************************************
+% History                            *
+%*************************************
+
+all x (History(x) -> exists y(Continuant(y) & historyOf(x,y) & all z (occurrentPartOf(x,z) -> -ProcessProfile(z)))).
+
+%*************************************
+% ProcessProfile                     *
+%*************************************
+
+all x (ProcessProfile(x) -> (exists y (Process(y) & processProfileOf(x,y)))).
+
+all x (ProcessProfile(x) -> Process(x)).
+
+%*************************************
+% RelationalQuality                  *
+%*************************************
+
+all x (RelationalQuality(x) <-> (Quality(x) & exists y exists z (-(y=z) & IndependentContinuant(y) & IndependentContinuant(z) & inheresInAtAll(x,y) & inheresInAtAll(x,z)))).
+
+%*************************************
+% SpecificallyDependentContinuant    *
+%*************************************
+
+all x (SpecificallyDependentContinuant(x) -> all y(partOfContinuantAtSome(x,y) -> -(IndependentContinuant(y) | GenericallyDependentContinuant(y))) & all z (continuantPartOfAtAllTimesWholeExists(x,z) -> -(IndependentContinuant(z) | GenericallyDependentContinuant(z))) & exists u(inheresInAtAll(x,u) & IndependentContinuant(u) & -SpatialRegion(u))). 
+
+%*************************************
+% Role                               *
+%*************************************
+
+all x (Role(x) -> all y(partOfContinuantAtSome(x,y) -> -Disposition(y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z) -> -Disposition(z))).
+
+%*************************************
+% ThreeDimensionalSpatialRegion      *
+%*************************************
+
+all x (TwoDimensionalSpatialRegion(x) -> all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> -ThreeDimensionalSpatialRegion(y)) & all z(hasContinuantPartAtSome(x,z) -> -ThreeDimensionalSpatialRegion(z))). 
+
+%*************************************
+% TemporalRegion                     *
+%*************************************
+
+all x (TemporalRegion(x) -> hasTemporalOccupant(x,x) & occupiesTemporalRegion(x,x) & all y(occurrentPartOf(x,y) -> TemporalRegion(y)) & all z(hasOccurrentPart(x,z) -> TemporalRegion(z))).
+
+%*************************************
+% OneDimensionalSpatialRegion        *
+%*************************************
+
+all x (OneDimensionalSpatialRegion(x) -> all y (hasContinuantPartAtAllTimesWholeExists(x,y) -> -(TwoDimensionalSpatialRegion(y) | ThreeDimensionalSpatialRegion(y))) & all z(hasContinuantPartAtSome(x,z) -> -(TwoDimensionalSpatialRegion(z) | ThreeDimensionalSpatialRegion(z)))). 
+
+%*************************************
+% SpatialRegion                      *
+%*************************************
+
+all x (SpatialRegion(x) -> (ImmaterialEntity(x) & all y(hasContinuantPartAtAllTimesWholeExists(x,y) -> SpatialRegion(y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z) -> SpatialRegion(z)) & hasSpatialOccupantAtSome(x,x) & occupiesSpatialRegionAtSome(x,x) & all u(hasContinuantPartAtSome(x,u) -> SpatialRegion(u)) & all w(partOfContinuantAtSome(x,w) -> SpatialRegion(w)))). 
+
+%*************************************
+% IndependentContinuant              *
+%*************************************
+
+all x (IndependentContinuant(x) -> (Continuant(x) & exists y (SpatialRegion(y) & occupiesSpatialRegionAtSome(x,y)) & -(exists z(specificallyDependsOnAtSome(x,z))) & all u(partOfContinuantAtSome(x,u) -> -(SpecificallyDependentContinuant(u) | GenericallyDependentContinuant(u))) & all z(continuantPartOfAtAllTimesWholeExists(x,z) -> -(SpecificallyDependentContinuant(u) | GenericallyDependentContinuant(u))))).
+
+%*************************************
+% ZeroDimensionalTemporalRegion      *
+%*************************************
+
+all x (ZeroDimensionalTemporalRegion(x) -> -(exists y (hasProperOccurrentPart(x,y)))).
+%OWL12.1
+
+%*************************************
+% MaterialEntity                     *
+%*************************************
+
+all x (MaterialEntity(x) -> all y(continuantPartOfAtAllTimesWholeExists(x,y) -> MaterialEntity(y)) & all z(hasContinuantPartAtSome(x,z) -> (MaterialEntity(z) | ImmaterialEntity(z))) & all w (partOfContinuantAtSome(x,w) -> MaterialEntity(w)) & all u(hasContinuantPartAtAllTimesWholeExists(x,u) -> (MaterialEntity(u) | ImmaterialEntity(u))) & all s(occupiesSpatialRegionAtSome(x,s) -> ThreeDimensionalSpatialRegion(s))). 
+
+%***************************************
+% TwoDimensionalContinuantFiatBoundary *                   
+%***************************************
+
+all x (ZeroDimensionalContinuantFiatBoundary(x) -> all y(hasContinuantPartAtAllTimesWholeExists(x,y) -> -(OneDimensionalContinuantFiatBoundary(y) | TwoDimensionalContinuantFiatBoundary(y))) & all z (hasContinuantPartAtSome(x,z) -> -(OneDimensionalContinuantFiatBoundary(z) | TwoDimensionalContinuantFiatBoundary(z)))).
+
+%*************************************
+% GenericallyDependentContinuant     *
+%*************************************
+
+all x (GenericallyDependentContinuant(x) -> exists y(SpecificallyDependentContinuant(y) & concretizedByAtSome(x,y)) & all z(continuantPartOfAtAllTimesWholeExists(x,z) -> -(IndependentContinuant(z) | SpecificallyDependentContinuant(z))) & all u (hasContinuantPartAtSome(x,u) -> -(IndependentContinuant(u) | SpecificallyDependentContinuant(u)))). 
+
+%*************************************
+% SpatiotemporalRegion               *
+%*************************************
+
+all x (SpatiotemporalRegion(x) -> all y (occurrentPartOf(x,y) -> SpatiotemporalRegion(y)) & hasSpatioTemporalOccupant(x,x) & occupiesSpatiotemporalRegion(x,x) & all z(hasOccurrentPart(x,z) -> SpatiotemporalRegion(z)) & exists t(TemporalRegion(t) & projectsOnTemporalRegion(x,t)) & exists u(SpatialRegion(u) & projectsOnSpatialRegionAtSome(x,u))).
+
+%*************************************
+% Process Boundary                   *
+%*************************************
+ 
+all x (ProcessBoundary(x) -> all y (occurrentPartOf(x,y) -> (Process(y) | ProcessBoundary(y))) & all z (occupiesSpatiotemporalRegion(x,z) -> (SpatiotemporalRegion(z) & exists u (SpatiotemporalRegion(u) & temporalPartOf(z,u)))) & all t (existsAt(x,t) -> ZeroDimensionalTemporalRegion(t)) & all w (hasOccurrentPart(x,w) -> ProcessBoundary(w))). 
+
+%*****************************************
+% Taxonomy Axioms                        *
+%*****************************************
+
+all x (Function(x)->Disposition(x)) & all x (Object(x) -> MaterialEntity(x)) & all x (Process(x) -> Occurrent(x)) & all x (RelationalQuality(x) -> Quality(x)).
+%OWL1.9
+
+all x (Entity(x) -> exists t(TemporalRegion(t) & existsAt(x,t))) & all x (Continuant(x)->Entity(x)) & all x(FiatObjectPart(x) -> MaterialEntity(x)).
+%OWL1.10
+
+all x (ThreeDimensionalSpatialRegion(x) -> SpatialRegion(x)) & all x (ObjectAggregate(x) -> MaterialEntity(x)) & all x (Occurrent(x)->Entity(x)).
+%OWL1.11
+
+all x (Site(x) -> ImmaterialEntity(x)) & all x (TwoDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)) & all x (OneDimensionalTemporalRegion(x) -> TemporalRegion(x)).
+%OWL1.12
+
+all x (ZeroDimensionalTemporalRegion(x) -> TemporalRegion(x)) & all x (MaterialEntity(x) -> IndependentContinuant(x)) & all x (ProcessBoundary(x) -> Occurrent(x)) & all x (GenericallyDependentContinuant(x) -> Continuant(x)) & all x (ZeroDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)).
+%OWL1.13
+
+all x (History(x) -> Process(x)) & all x (OneDimensionalContinuantFiatBoundary(x) -> ContinuantFiatBoundary(x)) & all x (ImmaterialEntity(x) -> IndependentContinuant(x)).
+%OWL1.14
+
+all x (Disposition(x) -> (RealizableEntity(x))) & all x (RealizableEntity(x) -> (SpecificallyDependentContinuant(x))) & all x (Quality(x) -> SpecificallyDependentContinuant(x)).
+%OWL1.15
+
+all x (ContinuantFiatBoundary(x) -> ImmaterialEntity(x)) & all x (TemporalRegion(x) -> Occurrent(x)) & all x (OneDimensionalSpatialRegion(x) -> SpatialRegion(x)) & all x (Role(x) -> RealizableEntity(x)).
+%OWL1.16
+
+all x (ZeroDimensionalSpatialRegion(x) -> SpatialRegion(x)) & all x (TwoDimensionalSpatialRegion(x) -> SpatialRegion(x)) & all x (SpecificallyDependentContinuant(x) -> Continuant(x)).
+%OWL1.17
+
+%*****************************************
+% Disjointness Axioms                    *
+%*****************************************
+
+all x ((ThreeDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ZeroDimensionalContinuantFiatBoundary(x))) & (TwoDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -ZeroDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x))) & (OneDimensionalContinuantFiatBoundary(x) -> (-ZeroDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x))) & (ZeroDimensionalContinuantFiatBoundary(x) -> (-OneDimensionalContinuantFiatBoundary(x) & -TwoDimensionalContinuantFiatBoundary(x) & -ThreeDimensionalContinuantFiatBoundary(x)))). 
+%OWL1.1
+
+all x ((SpatialRegion(x) -> (-ContinuantFiatBoundary(x) & -Site(x))) & (ContinuantFiatBoundary(x) -> (-SpatialRegion(x) & -Site(x))) & (Site(x) -> (-ContinuantFiatBoundary(x) & -SpatialRegion(x))) & (ThreeDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ZeroDimensionalSpatialRegion(x))) & (TwoDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -ZeroDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x))) & (OneDimensionalSpatialRegion(x) -> (-ZeroDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x))) & (ZeroDimensionalSpatialRegion(x) -> (-OneDimensionalSpatialRegion(x) & -TwoDimensionalSpatialRegion(x) & -ThreeDimensionalSpatialRegion(x)))).
+%OWL1.2
+
+all x ((SpecificallyDependentContinuant(x) -> (-GenericallyDependentContinuant(x) & -IndependentContinuant(x))) & (GenericallyDependentContinuant(x) -> (-IndependentContinuant(x) & -SpecificallyDependentContinuant(x))) & (IndependentContinuant(x) -> (-GenericallyDependentContinuant(x) & -SpecificallyDependentContinuant(x)))). 
+%OWL1.3 
+
+all x ((Process(x) -> (-ProcessBoundary(x) & -TemporalRegion(x) & -SpatiotemporalRegion(x))) & (ProcessBoundary(x) -> (-Process(x) & -TemporalRegion(x) & -SpatiotemporalRegion(x))) & (TemporalRegion(x) -> (-ProcessBoundary(x) & -Process(x) & -SpatiotemporalRegion(x))) & (SpatiotemporalRegion(x) -> (-ProcessBoundary(x) & -TemporalRegion(x) & -Process(x)))).
+%OWL1.4
+
+-(exists x (OneDimensionalTemporalRegion(x) & ZeroDimensionalTemporalRegion(x))) & -(exists x(MaterialEntity(x) & ImmaterialEntity(x))) & -(exists x(ZeroDimensionalTemporalRegion(x) & OneDimensionalTemporalRegion(x))).
+%OWL1.5
+
+-(exists x (Occurrent(x) & Continuant(x))) & -(exists x(Role(x) & Disposition(x))) & -(exists x (Continuant(x) & Occurrent(x))).
+%OWL1.6
+
+-(exists x (ProcessProfile(x) & History(x))) & -(exists x (History(x) & ProcessProfile(x))) & -(exists x(ImmaterialEntity(x) & MaterialEntity(x))).
+%OWL1.7
+
+-(exists x(Quality(x) & RealizableEntity(x))) & -(exists x(Disposition(x) & Role(x))) & -(exists x(RealizableEntity(x) & Quality(x))) & all x (SpatiotemporalRegion(x) -> Occurrent(x)).
+%OWL1.8
+
+%**************************************
+% A-Box                               *
+%**************************************
+
+%Continuant(a). 
+%Occurrent(d). 
+%TemporalRegion(e). 
+%-(a=b | a=c | a=d | a=e | b=c | b=d | b=e | c=d | c=e | d=e). 
+
+%exists a exists b exists c exists d exists e exists f exists g exists h exists i exists j(-(a=b | a=c | a=d | a=e | a=f | a=g | a=h | a=i | a=j | b=c | b=d | b=e | b=f | b=g | b=h | %b=i | b=j | c=d | c=e | c=f | c=g | c=h | c=i | c=j | d=e | d=f | d=g | d=h | d=i | d=j | e=f | e=g | e=h | e=i | e=j | f=g | f=h | f=i | g=h | g=i | h=i)). 
+
+%partOfContinuantAtSome(a,b) & partOfContinuantAtSome(b,c). 
