@@ -955,19 +955,3 @@ all x all y all z((temporalPartOf(x,y) & temporalPartOf(y,z)) -> temporalPartOf(
 all x all t(existsAt(x,t) <-> duringWhichExists(t,x)).
 %[XXX-001]
 
-%***********************************
-% A-Box                            *
-%***********************************
-
-%Object(a).
-%ObjectAggregate(b).
-%FiatObjectAggregate(c).
-%SpecificallyDependentContinuant(d).
-%GenericallyDependentContinuant(e).
-%ContinuantFiatBoundary(k).
-%ProcessBoundary(f).
-%History(g).
-%ProcessProfile(h).
-%SpatioTemporalRegion(i).
-%TemporalRegion(j). 
-
