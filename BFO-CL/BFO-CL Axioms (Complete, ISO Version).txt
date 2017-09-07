@@ -1,0 +1,1684 @@
+(isA Continuant Entity)
+	(isA IndependentContinuant Continuant)
+		(isA MaterialEntity IndependentContinuant)
+			(isA Object MaterialEntity)
+			(isA FiatObjectPart MaterialEntity)
+			(isA ObjectAggregate MaterialEntity)
+		(isA ImmaterialEntity IndependentContinuant)
+			(isA Site ImmaterialEntity)
+			(isA ContinuantFiatBoundary ImmaterialEntity)
+				(isA 0DContinuantFiatBoundary ContinuantFiatBoundary)
+				(isA 1DContinuantFiatBoundary ContinuantFiatBoundary)
+				(isA 2DContinuantFiatBoundary ContinuantFiatBoundary)		
+				(isA 3DContinuantFiatBoundary ContinuantFiatBoundary)		
+			(isA SpatialRegion ImmaterialEntity)
+				(isA 0DSpatialRegion SpatialRegion)		
+				(isA 1DSpatialRegion SpatialRegion)						
+				(isA 2DSpatialRegion SpatialRegion)						
+				(isA 3DSpatialRegion SpatialRegion)					
+	(isA GenericallyDependentContinuant Continuant)	
+	(isA SpecificallyDependentContinuant Continuant)			
+		(isA Quality SpecificallyDependentContinuant)
+			(isA RelationalQuality Quality)
+		(isA RealizableEntity SpecificallyDependentContinuant)	
+			(isA  Role RealizableEntity)	
+			(isA  Disposition RealizableEntity)	
+				(isA Function  Disposition)				
+(isA Occurrent Entity)
+	(isA Process Occurrent)
+		(isA ProcessProfile Process)
+		(isA History Process)
+	(isA ProcessBoundary Occurrent)
+	(isA TemporalRegion Occurrent)
+		(isA 0DTemporalRegion TemporalRegion)
+		(isA 1DTemporalRegion TemporalRegion)
+			(isA TempInterval  1DTemporalRegion)	
+	(isA SpatiotemporalRegion Occurrent)
+	
+(disjoint Continuant Occurrent)
+	(disjoint IndependentContinuant GenericallyDependentContinuant SpecificallyDependentContinuant)
+		(disjoint MaterialEntity ImmaterialEntity)
+			(disjoint Object FiatObjectPart Objectaggregate)
+		(disjoint Site ContinuantFiatBoundary SpatialRegion)
+			(disjoint 0DContinuantFiatBoundary 1DContinuantFiatBoundary
+						2DContinuantFiatBoundary 3DContinuantFiatBoundary)
+			(disjoint 0DSpatialRegion 1DSpatialRegion 
+						2DSpatialRegion 3DSpatialRegion )
+	(disjoint Quality RealizableEntity)
+			(disjoint Role Disposition)
+	(disjoint Process ProcessBoundary TemporalRegion SpatiotemporalRegion)	
+		(disjoint 0DTemporalRegion 1DTemporalRegion)
+		
+((distributive Universal)
+	IndependentContinuant		
+	Continuant		
+	MaterialEntity		
+	Object		
+	FiatObjectPart		
+	ObjectAggregate		
+	ImmaterialEntity		
+	Site		
+	ContinuantFiatBoundary		
+	0DContinuantFiatBoundary
+	1DContinuantFiatBoundary		
+	2DContinuantFiatBoundary		
+	3DContinuantFiatBoundary		
+	SpatialRegion		
+	0DSpatialRegion		
+	1DSpatialRegion		
+	2DSpatialRegion		
+	3DSpatialRegion
+	GenericallyDependentContinuant		
+	SpecificallyDependentContinuant		
+	Quality		
+	RelationalQuality		
+	RealizableEntity		
+	Role		
+	Disposition		
+	Function
+	Occurrent		
+	Process		
+	ProcessProfile
+	History
+	ProcessBoundary
+	TemporalRegion		
+	0DTemporalRegion		
+	1DTemporalRegion
+	TempInterval  	
+	SpatiotemporalRegion)
+
+(binaryRelation exists_at)
+	(hasSignature exists_at Entity TemporalRegion) 
+
+(ternaryRelation continuant_part_of)
+	(hasSignature continuant_part_of  Continuant Continuant TemporalRegion)	
+
+(ternaryRelation continuant_overlap) 
+	(hasSignature continuant_overlap  Continuant Continuant TemporalRegion)
+
+(ternaryRelation proper_continuant_part_of) 
+	(hasSignature proper_continuant_part_of Continuant Continuant TemporalRegion) 
+	
+(ternaryRelation has_continuant_part) 
+
+(ternaryRelation has_proper_continuant_part) 
+
+(quaternaryRelation continuant_mereological_product)
+	(hasSignature continuant_mereological_product Continuant Continuant Continuant TemporalRegion)
+	
+(ternaryRelation has_material_basis_at)
+	(hasSignature has_material_basis_at Disposition MaterialEntity TemporalRegion)
+	
+(ternaryRelation located_in_at)
+	(hasSignature locatedInAt IndependentContinuant IndependentContinuant TemporalRegion)
+
+(ternaryRelation member_part_of)
+	(hasSignature member_part_of Object ObjectAggregate TemporalRegion) 
+	
+(ternaryRelation s-depends_on_at)
+	(hasSignature s-depends_on_at (OR SpecificallyDependentContinuant Process ProcessBoundary)(OR IndependentContinuant SpecificallyDependentContinuant Process) TemporalRegion)
+						
+(ternaryRelation m-s-depends_on_at) 
+	(hasSignature m-s-depends_on_at (OR SpecificallyDependentContinuant Process)(OR SpecificallyDependentContinuant Process) TemporalRegion)	
+						
+(ternaryRelation g-depends_on_at) 
+	(hasSignature g-depends_on_at GenericallyDependentContinuant IndependentContinuant TemporalRegion)	
+						
+(ternaryRelation concretizes_at)
+	(hasSignature concretizes_at SpecificallyDependentContinuant GenericallyDependentContinuant TemporalRegion) 
+						
+(ternaryRelation inheres_in_at)
+	(hasSignature inheres_in_at SpecificallyDependentContinuant MaterialEntity TemporalRegion)
+	
+(ternaryRelation bearer_of_at)
+	(hasSignature bearer_of_at IndependentContinuant (OR SpecificallyDependentContinuant Process) TemporalRegion)
+							
+(ternaryRelation quality_of_at)
+	(hasSignature quality_of_at Quality IndependentContinuant TemporalRegion)
+	
+(ternaryRelation realizes_at) 
+	(hasSignature realizes_at Process RealizableEntity TemporalRegion)
+				
+(binaryRelation occurrent_part_of)
+	(hasSignature occurrent_part_of  Occurrent Occurrent) 
+
+(binaryRelation occurrent_overlap)
+	(hasSignature occurrent_overlap  Occurrent Occurrent)
+	
+(binaryRelation proper_occurrent_part_of)
+	(hasSignature proper_occurrent_part_of Occurrent Occurrent )	
+
+(ternaryRelation occurrent_mereological_product)
+
+(binaryRelation temporal_part_of)
+	(hasSignature temporal_part_of Occurrent Occurrent) 
+	
+(binaryRelation proper_temporal_part_of)
+	(hasSignature proper_temporal_part_of Occurrent Occurrent)
+	
+(binaryRelation temporally_projects_onto)
+	(hasSignature temporally_projects_onto SpatiotemporalRegion TemporalRegion)
+	
+(ternaryRelation spatially_projects_onto_at)
+	(hasSignature spatially_projects_onto_at SpatiotemporalRegion SpatialRegion TemporalRegion)
+
+(binaryRelation occupies_temporalregion)
+	(hasSignature occupies_temporalregion Particular TemporalRegion)
+
+(binaryRelation occupies_spatiotemporalregion)
+	(hasSignature occupies_spatiotemporalregion Occurrent SpatiotemporalRegion)
+		
+(ternaryRelation occupies_spatial_region_at)
+	(hasSignature occupies_spatial_region_at Particular SpatialRegion 0DTemporalRegion)
+	
+(binaryRelation occurs_in)
+	(hasSignature occurs_in Process (OR MaterialEntity ImmaterialEntity))
+							
+(binaryRelation history_of)
+	(hasSignature history_of History (OR MaterialEntity Site))
+	
+(binaryRelation has_history)
+	(hasSignature has_history (OR MaterialEntity Site) History)
+	
+(ternaryRelation has_participant_at)
+	(hasSignature has_participant_at Process Continuant TemporalRegion)
+	
+(binaryRelation process_profile_of)
+	(hasSignature process_profile_of Occurrent Occurrent) 
+		 
+(ternaryRelation meets_at)
+	(hasSignature meets_at TempInterval 0DTemporalRegion TempInterval)	
+	
+(binaryRelation preceded_by)
+	(hasSignature TemporalRegion TemporalRegion)
+
+(binaryRelation precedes)
+	(hasSignature TemporalRegion TemporalRegion)	
+	
+(forall (x)
+	(if 
+		(Entity x)
+		(exists (t)
+			(and 
+				(TemporalRegion t)
+				(exists_at x t)))))
+
+(forall (x y t)
+	(if 
+		(and (continuant_part_of x y t) (continuant_part_of y x t))
+		(= y x)))
+
+(forall (x y z t)
+	(if 
+		(and 
+			(continuant_part_of x y t)
+			(continuant_part_of y z t))
+		(continuant_part_of x z t)))
+				
+(forall (x t)
+	(if 
+		(and
+			(Continuant x)
+			(exists_at x t))
+	(continuant_part_of x x t)))
+		
+(forall (x y t)
+	(if 
+		(proper_continuant_part_of x y t)
+		(exists (z)
+			(and 
+				(continuant_part_of z y t)
+				(not (continuant_overlap z x t))))))
+
+(forall (x t y)
+	(if
+		(continuant_overlap x y t)
+		(exists (z)
+			(and 
+				(continuant_mereological_product z x y t)
+				(forall (w)
+					(if 
+						(continuant_mereological_product w x y t)
+						(= w z)))))))
+				
+(forall (x y t)
+	(if
+		(continuant_part_of x y t)
+		(and 
+			(exists_at x t)
+			(exists_at y t))))
+		
+(forall (x y)
+		(and 
+			(Continuant x)
+			(exists (t)
+				(continuant_part_of y x t)
+					(Continuant y))))	
+
+(forall (x y t)
+	(iff 
+		(continuant_overlap x y t)
+		(exists (z)
+			(and 
+				(continuant_part_of z x t)
+				(continuant_part_of z y t)))))
+
+(forall (x y t)
+	(iff 
+		(polyadic_continuant_overlap x y t)
+		(continuant_overlap x y t)))
+
+(forall (x y z ... t)
+	(iff 
+		(polyadic_continuant_overlap x y z ... t)
+		(or 
+			(continuant_overlap x y t)
+			(polyadic_continuant_overlap x z ... t))))
+
+(forall (x y t)
+	(iff 
+		(proper_continuant_part_of x y t)
+		(and 
+			(continuant_part_of x y t)
+			(not (= x y)))))
+
+(forall (x y t)
+	(iff
+		(has_continuant_part x y t)		
+		(continuant_part_of y x t)))
+
+(forall (x y t)
+	(iff
+		(has_proper_continuant_part x y t)		
+		(proper_continuant_part_of y x t)))
+			
+(forall (?product ?cont1 ?cont2 t)
+	(iff
+		(continuant_mereological_product ?product ?cont1 ?cont2 t)
+		(forall (w)
+			(iff
+				(continuant_part_of w ?product t)
+				(and
+					(continuant_part_of w ?cont1 t)
+					(continuant_part_of w ?cont2 t))))))
+
+(forall (?sum ?cont1 ?cont2 t)
+	(iff
+		(continuant_mereological_sum ?sum ?cont1 ?cont2 t)
+		(and 
+			(exists_at ?cont1 t)
+			(exists_at ?cont2 t)			
+			(forall (w)
+				(iff
+					(continuant_overlap w ?sum t)
+					(or
+						(continuant_overlap w ?cont1 t)
+						(continuant_overlap w ?cont2 t)))))))
+
+(forall (?sum ?cont1 ?cont2 ?cont3 ...continuants t)
+	(iff
+		(continuant_mereological_sum ?sum ?cont1 ?cont2 ?cont3 ...continuants t)
+		(and 
+			(polyadic_exists_at ?cont1 ?cont2 ?cont3 ...continuants t)		
+			(forall (w)
+				(iff
+					(continuant_overlap w ?sum t)
+					(polyadic_continuant_overlap w ?cont1 ?cont2 ?cont3 ...continuants t))))))	
+
+(forall (x y t)
+	(if
+		(and 
+			(TemporalRegion t)
+			(has_participant_at x y t) 
+		(Continuant y))))
+
+(forall (x y t)
+	(if
+		(and
+			(TemporalRegion t)
+			(Continuant x)
+			(s-depends_on_at x y t)
+		(forall (t1)
+			(if
+				(and
+					(TemporalRegion t1)
+					(exists_at x t1)
+				(s-depends_on_at x y t1)))))))
+
+(forall (x y r1 t)
+	(if
+		(and
+			(TemporalRegion t)
+			(SpatialRegion r1)
+			(occupies_spatial_region_at x r1 t)
+			(continuant_part_of y x t)
+		(exists (r2)
+			(SpatialRegion r2)
+			(continuant_part_of r2 r1 t)
+			(occupies_spatial_region_at y r2 t))))) 
+	
+(forall (x y t)
+	(if
+		(and
+			(TemporalRegion t)
+			(has_material_basis_at x y t) 
+		(and
+			(Disposition x)
+			(MaterialEntity y)
+			(exists (z)
+				(and
+					(bearer_of_at z x t)
+					(continuant_part_of y z t)))))))
+	
+(forall (x y t)
+	(iff 
+		(locatedInAt x y t)
+		(and 
+			(IndependentContinuant x)
+			(IndependentContinuant y)
+			(TemporalRegion t)
+			(exists (r1 r2)
+				(and
+					(occupies_spatial_region_at x r1 t)
+					(occupies_spatial_region_at y r2 t)
+					(continuant_part_of r1 r2 t)
+
+(forall (x)
+	(iff 
+		(IndependentContinuant x)
+		(and 
+			(Continuant x)			
+			(forall (y t)
+				(if
+					(TemporalRegion t)
+				(not (s-depends_on_at x y t))))))
+
+(forall (x t)
+	(if 
+		(and
+			(IndependentContinuant x)
+			(TemporalRegion t)
+			(exists_at(x t)
+		(exists y)
+			s-depends_on_at y x t)))))
+
+(forall (x t)
+	(if
+		(and
+			(IndependentContinuant x)
+			(TemporalRegion t)
+		(exists (y)
+			(and
+				(SpatialRegion y)
+				(locatedInAt x y t))))))
+
+(forall (x y t)
+	(if
+		(and
+			(Occurrent x)
+			(IndependentContinuant y)
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+		(forall (t1)
+			(if
+				(and
+					(TemporalRegion t1)
+					(exists_at x t1)
+				(s-depends_on_at x y t1)))))))
+				
+(forall (x y z t)
+	(if
+		(and
+			(IndependentContinuant x)
+			(IndependentContinuant y)
+			(IndependentContinuant z)
+			(TemporalRegion t)
+			(continuant_part_of x y t)
+			(locatedInAt y z t)
+		(locatedInAt x z t))))
+
+(forall (x y z t)
+	(if
+		(and
+			(IndependentContinuant x)
+			(IndependentContinuant y)
+			(IndependentContinuant z)
+			(TemporalRegion t)
+			(locatedInAt x y t)
+			(continuant_part_of y z t)
+		(locatedInAt x z t))))
+
+(forall (x y t)
+	(if
+		(and
+			(TemporalRegion t)
+			(concretizes_at x y t)
+		(and	
+			(SpecificallyDependentContinuant x)
+			(GenericallyDependentContinuant y)
+			(exists (z)
+				(and
+					(IndependentContinuant z)
+					(s-depends_on_at(x z t)
+					(g-depends_on_at y z t))))))))
+					
+(forall (x r t)
+	(if
+		(and
+			(IndependentContinuant x)
+			(locatedInAt x r t)
+			(TemporalRegion t)
+			(SpatialRegion r)
+		(exists (r1)
+			(and
+				(SpatialRegion r1)
+				(continuant_part_of r1 r t)
+				(occupies_spatial_region_at x r1 t))))))	
+
+(forall (x y t)
+	(if
+		(and 
+			(continuant_part_of x y t)
+			(MaterialEntity x))
+		(MaterialEntity y)))
+
+(forall (x)
+	(if 
+		(MaterialEntity x)
+		(exists (t)
+			(and 
+				(1DTemporalRegion t)
+				(exists_at x t)
+				))))
+
+(forall (x t)
+	(if 
+		(and
+			(MaterialEntity x)
+			(TemporalRegion t)
+			(exists_at x t))
+		(exists (r)
+			(and 
+				(3DSpatialRegion r) 
+				(occupies_spatial_region_at x r t)))))
+
+(forall (x)
+	(if
+		(and
+			(Entity x)
+			(exists (y t)
+				(and
+					(MaterialEntity y)
+					(TemporalRegion t)
+					(continuant_part_of x y t)
+		(MaterialEntity x))))))
+
+(forall (x)
+	(iff 
+		(ObjectAggregate x)
+		(exists (...objects t) 
+			(is_objectAggregate_of x ...objects t))))
+
+(forall (?aggr ?obj1 ?obj2 ...objects t)
+	(iff 
+		(objectAggregate_of ?aggr ?obj1 ?obj2 ...objects t)
+		(and 
+			(continuant_mereological_disjoint  ?obj1 ?obj2 ...objects t)
+			(continuant_mereological_sum ?aggr ?obj1 ?obj2 ...objects t))))
+
+(not (objectAggregate_of))
+(forall (x) (not (objectAggregate_of x)))
+(forall (x y) (not (objectAggregate_of x y)))
+(forall (x y z) (not (objectAggregate_of x y z)))
+
+(forall (?aggr ...objects t)
+	(if 
+		(objectAggregate_of ?aggr ...objects t)
+		(and
+			(ObjectAggregate  ?aggr)
+			(TemporalRegion t)
+			(forall (x)
+				(if 
+					(oneOf x ...objects)
+					(Object x))))))
+
+(forall (x y t)
+	(iff 
+		(continuant_mereological_disjoint x y t) 
+		(and 
+			(exists_at x t)
+			(exists_at y t)
+			(not (continuant_overlap x y t)))))
+
+(forall (x)
+	(forall (x y z ... t)
+		(iff 	
+			(continuant_mereological_disjoint x y z ... t)
+			(and 
+				(not (polyadic_continuant_overlap x y z ... t))
+				(continuant_mereological_disjoint  y z ... t)))))
+
+(not (continuant_mereological_disjoint))
+(forall (x) (not (continuant_mereological_disjoint  x)))
+(forall (x t) (not (continuant_mereological_disjoint  x t)))
+
+(forall (x y t)
+	(iff 
+		(polyadic_continuant_overlap x y t)
+		(continuant_overlap x y t)))
+
+(forall (x y z ... t)
+	(iff 
+		(polyadic_continuant_overlap x y z ... t)
+		(or 
+			(continuant_overlap x y t)
+			(polyadic_continuant_overlap x z ... t))))
+
+(not (polyadic_continuant_overlap))
+(forall (x) (not (polyadic_continuant_overlap x)))
+(forall (x y) (not (polyadic_continuant_overlap x y)))
+
+(forall (x t )
+	(iff 
+		(polyadic_exists_at x t)
+		(exists_at x t)))
+
+(forall (x y ...t )
+	(iff 
+		(polyadic_exists_at x y ... t)
+		(and 
+			(exists_at x t)
+			(polyadic_exists_at y ... t))))
+			
+(not (polyadic_exists_at))
+(forall (x) (not (polyadic_exists_at x)))
+
+(forall (x y t)
+	(iff 
+		(member_part_of x y t)
+		(exists (...)
+			(and 
+				(is_objectAggregate_of y ... t)
+				(oneOf x ...)))))					
+
+(forall (x)
+	(if
+		(FiatObjectPart x)
+		(and
+			(MaterialEntity x)
+			(forall (t)
+				(if 
+					(and
+						(TemporalRegion t)
+						(exists_at x t)
+					(exists (y) 
+						(and
+							(Object y)
+							(proper_continuant_part_of x y t)))))))))
+	
+(forall (x)
+	(iff 
+		(ImmaterialEntity x)
+		(and 
+			(IndependentContinuant x)
+			(forall (y t)
+				(if
+					(and
+						(MaterialEntity y)
+						(TemporalRegion t)
+							(not (continuant_part_of y x t))))))))
+							
+(forall (x t)
+	(if
+		(and
+			(TemporalRegion t) 
+			(ContinuantFiatBoundary x)
+			(exists_at x t))
+		(exists (y)
+			(and
+				(SpatialRegion y)
+				(occupies_spatial_region_at x y t)))))
+
+(forall (x)
+	(iff 
+		(ContinuantFiatBoundary x)
+		(and 
+			(ImmaterialEntity x)
+			(exists (y t)
+				(TemporalRegion t)
+				(SpatialRegion y)
+				(locatedInAt x y t)
+				(forall z t1)
+					(if
+						(SpatialRegion z)
+						(not (continuant_part_of z x t1)))))))
+
+(forall (x)
+	(iff
+		(0DContinuantFiatBoundary x)
+		(and
+			(ContinuantFiatBoundary x)
+			(forall (y t)
+				(if
+					(and
+						(SpatialRegion y)
+						(TemporalRegion t)
+						(locatedInAt x y t)
+					(0DContinuantFiatBoundary y))))))
+						
+(forall (x)
+	(iff
+		(1DContinuantFiatBoundary x)
+		(and
+			(ContinuantFiatBoundary x)
+			(forall (y t)
+				(if
+					(and
+						(SpatialRegion y)
+						(TemporalRegion t)
+						(locatedInAt x y t)
+					(1DContinuantFiatBoundary y)))))))
+						
+(forall (x)
+	(iff
+		(2DContinuantFiatBoundary x)
+		(and
+			(ContinuantFiatBoundary x)
+			(forall (y t)
+				(if
+					(and
+						(SpatialRegion y)
+						(TemporalRegion t)
+						(locatedInAt x y t)
+					(2DContinuantFiatBoundary y)))))))
+
+(forall (x t)
+	(if 
+		(and 
+			(ContinuantFiatBoundary x)
+			(TemporalRegion t)
+			(exists_at x t)
+		(exists (y)
+			(and	
+				(SpatialRegion y)
+				(occupies_spatial_region_at x y t))))))
+
+(forall (x y t)
+	(if
+		(and
+			(SpatialRegion x)
+			(TemporalRegion t)
+			(continuant_part_of y x t)
+		(SpatialRegion y))))
+
+(forall (x t)
+	(if 
+		(and 
+			(MaterialEntity x) 
+			(TemporalRegion t)
+			(exists_at x t)
+		(exists (y)
+			(and	
+				(3DSpatialRegion y)
+				(occupies_spatial_region_at x y t))))))
+
+(forall (x r t)
+	(if
+		(occupies_spatial_region_at x r t)
+		(and
+			(SpatialRegion r)
+			(IndependentContinuant x)
+			(TemporalRegion t))))
+
+(forall (r t)
+	(if
+		(and
+			(TemporalRegion t)
+			(SpatialRegion r)
+		(occupies_spatial_region_at r r t))))
+					
+(forall (x t)
+	(if
+		(and
+			(Site x)
+			(TemporalRegion t)
+			(exists_at x t)
+		(exists (y)
+			(and
+				(3DSpatialRegion y)
+				(occupies_spatial_region_at x y t))))))
+				
+(forall (x y)
+	(if
+		(exists (t)
+			(and
+				(TemporalRegion t)
+				(GenericallyDependentContinuant x)
+				(g-depends_on_at x y t)
+		(forall (t1)
+			(if
+				(and
+					(TemporalRegion t1)
+					(exists_at x t1)
+					(exists (z)
+				(g-depends_on_at x z t1)))))))
+
+(forall (x)
+	(iff
+		(GenericallyDependentContinuant x)
+		(and
+			(Continuant x)
+			(exists (y t)
+				(and
+					(IndependentContinuant y)
+					(TemporalRegion t)
+					(g-depends_on_at x y t))))))
+
+(forall (x y t)
+	(if
+		(and
+			(TemporalRegion t)
+			(g-depends_on_at x y t)
+		(exists z)
+			(and
+				(concretizes_at z x t)
+				(s-depends_on_at z y t)))))
+
+(forall (x y t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(SpecificallyDependentContinuant x))
+		(or	
+			(IndependentContinuant y)
+			(SpecificallyDependentContinuant y))))
+
+(forall (x y t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(SpecificallyDependentContinuant x)
+			(SpecificallyDependentContinuant y))
+		(s-depends_on_at y x t)))
+
+(forall (x y t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y)
+			(ProcessBoundary x))
+		(Process y)))
+
+(forall (x y t) 
+	(if 
+		(and
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+		(not (occurrent_overlap x y))))
+
+(forall (x y t) 
+	(if 
+		(s-depends_on_at x y t)
+		(not (continuant_overlap x y))))
+
+(forall (x y z t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at y x t)
+			(Process y)
+			(IndependentContinuant x)
+			(occurrent_part_of y z))
+		(s-depends_on_at z x t)))
+
+(forall (x y t)
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(Process x)
+			(IndependentContinuant y))
+		(exists (t1)
+			(and 
+				(TemporalRegion t1)
+				(exists_at x t1)
+				(exists_at y t1)))))
+				
+(forall (x y t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(SpecificallyDependentContinuant x)
+			(SpecificallyDependentContinuant y))
+		(iff
+			(exists_at x t) 
+			(exists_at y t))))
+
+(forall (x y t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(s-depends_on_at y x t))
+		(exists (z)
+			(and 
+				(s-depends_on_at x z t)
+				(not(s-depends_on_at z x t))))))
+
+(forall (x y z t) 
+	(if 
+		(and 
+			(TemporalRegion t)
+			(s-depends_on_at x y t)
+			(not (s-depends_on_at y x t))
+			(s-depends_on_at y z t)
+			(not (s-depends_on_at z y t)))
+		(s-depends_on_at x z t)))				
+
+(forall (x)
+	(iff
+		(RelationalQuality x)
+		(exists (y z t)
+			(and
+				(TemporalRegion t)
+				(IndependentContinuant y)
+				(IndependentContinuant z)
+				(quality_of_at x y t)
+				(quality_of_at x z t)))))
+
+(forall (x y t)
+	(iff
+		(quality_of_at x y t)
+		(and
+			(TemporalRegion t)
+			(Quality x)
+			(IndependentContinuant y)
+			(not (SpatialRegion y))
+			(s-depends_on_at x y t))))
+
+(forall (x)
+	(if
+		(exists (t)
+			(and
+				(exists_at x t)
+				(Quality x)
+			(forall (z)
+				(exists_at x z)
+				(Quality x))))))	
+				
+(forall (x t)
+	(if
+		(and
+			(RealizableEntity x)
+			(TemporalRegion t)
+		(exists (y)
+			(and
+				(IndependentContinuant y)
+				(not (SpatialRegion y))
+				(bearer_of_at y x t))))))
+
+(forall (x t)
+	(if
+		(and
+			(RealizableEntity x)
+			(TemporalRegion t)
+			(exists_at x t)
+		(exists (y)
+			(and
+				(MaterialEntity y)
+				(s-depends_on_at x y t))))))
+
+(forall (x)
+	(if 
+		(Disposition x)
+		(and
+			(RealizableEntity x)
+			(exists (y)
+				(and
+					(MaterialEntity y)
+					(bearer_of_at x y t))))))
+
+(forall (x y z t)
+	(if	
+		(and
+			(RealizableEntity x)
+			(Process y)
+			(TemporalRegion t)
+			(realizes_at y x t)
+			(bearer_of_at z x t) 
+		(has_participant_at y z t))))
+					
+(forall (x y t)
+	(iff 
+		(functionOf x y t)
+		(and	
+			(TemporalRegion t)
+			(Function x)
+			(IndependentContinuant y)
+			(not (SpatialRegion y))
+			(inheres_in_at x y t))))
+
+(forall (x y t)
+	(if
+		(and
+			(TemporalRegion t)
+			(realizes_at x y t)
+		(Process x)
+		(or
+			(Disposition y)
+			(Role y)
+		(exists (z)
+			(and
+				(MaterialEntity z)
+				(has_participant_at x z t)
+				(bearer_of_at z y t)))))))
+			
+(forall (x y t)
+	(iff
+		(roleOfAt x y t)
+		(and
+			(TemporalRegion t)
+			(Role x)
+			(IndependentContinuant y)
+			(not (SpatialRegion y))
+			(inheres_in_at x y t))))
+
+(forall (x y t)
+	(iff
+		(disposition_of x y t)
+		(and
+			(TemporalRegion t)
+			(Disposition x)
+			(IndependentContinuant y)
+			(not (SpatialRegion y))
+			(inheres_in_at x y t)))) 
+					
+(forall (x y t)
+	(iff
+		(has_function_at x y t)
+		(function_of y x t)))
+		
+(forall (x y t)
+	(iff
+		(has_role_at x y t) 
+		(role_of y x t)))
+		
+(forall (x y t)
+	(iff
+		(has_disposition_at x y t)
+		(disposition_of y x t)))
+	
+(forall (x) 
+	(iff
+		(Occurrent x)
+		(exists (y)
+				(temporal_part_of(y x)))))
+
+(forall (x)
+	(if 
+		(Occurrent x)
+		(exists (y)
+			(and 
+				(TemporalRegion y)
+				(occupies_temporalregion x y)))))
+
+(forall (x)
+	(if 
+		(Occurrent x)
+		(exists (y)
+			(and 
+				(SpatiotemporalRegion y)
+				(occupies_spatiotemporalregion x y)))))
+				
+(forall (x y)
+	(if 
+		(and 
+			(occurrent_part_of x y) 
+			(occurrent_part_of y x)
+		(= y x))))
+
+(forall (x y z)
+	(if 
+		(and 
+			(occurrent_part_of x y)
+			(occurrent_part_of y z))
+		(occurrent_part_of x z)))
+				
+(forall (x)
+	(if 
+		(Occurrent x)
+		(occurrent_part_of x x)))
+
+(forall (x y t)
+	(iff 
+		(occurrent_overlap x y)
+		(exists (z)
+			(and 
+				(occurrent_part_of z x)
+				(occurrent_part_of z y)))))
+
+(forall (x y )
+	(iff 
+		(proper_occurrent_part_of x y)
+		(and 
+			(occurrent_part_of x y)
+			(not (= x y)))))
+			
+(forall (?product ?occurent1 ?occurent2 )
+	(iff
+		(occurrent_mereological_product ?product ?occurent1 ?occurent2)
+		(forall (w)
+			(iff
+				(occurrent_part_of w ?product)
+				(and 
+					(occurrent_part_of w ?occurent1)
+					(occurrent_part_of w ?occurent2))))))
+
+(forall (x y)
+	(iff
+		(has_occurrent_part x y)		
+		(occurrent_part_of x y)))
+
+(forall (x y)
+	(iff
+		(has_proper_occurrent_part x y)		
+		(proper_occurrent_part_of x y))) 
+		
+(forall (x y )
+	(if 
+		(proper_occurrent_part_of x y)
+		(exists (z)
+			(and 
+				(occurrent_part_of z y )
+				(not (occurrent_overlap z x ))))))
+
+(forall (x  y)
+	(if
+		(occurrent_overlap x y)
+		(exists (z)
+			(and 
+				(occurrent_mereological_product z x y )
+				(forall (w)
+					(if 
+						(occurrent_mereological_product w x y )
+						(= w z)
+					))))))
+		
+(forall (x y)
+	(if
+		(occurrent_part_of x y)
+		(forall (t)
+			(if
+				(exists_at x t)
+				(exists_at x t)))))		
+
+(forall (x y)
+	(iff
+		(temporal_part_of x y)
+		(and
+			(occurrent_part_of x y)
+			(exists (t)
+				(and 
+					(TemporalRegion t)
+					(occupies_temporalregion x t)
+					(forall (z t1)
+						(if
+							(and
+								(TemporalRegion t1)
+								(Occurrent z)
+								(occupies_temporalregion z t1)
+								(occurrent_part_of t1 t)
+							(iff	
+								(occurrent_part_of z x)
+								(occurrent_part_of z y)))))))))) 
+
+(forall (x y)
+	(iff
+		(proper_temporal_part_of x y) 
+		(and
+			(temporal_part_of x y)
+			(not (= x y)))))
+			
+(forall (x y t)
+	(if 
+		(and 
+			(TemporalRegion t)
+			(has_participant_at x y t)
+		(Occurrent x))))
+
+(forall (x)
+	(iff
+		(Occurrent x)
+		(and
+			(Entity x)
+			(exists (y)
+				(temporal_part_of(y x))))))
+	
+
+(forall (x)
+	(if
+		(Process x)
+		(exists (z t)
+			(and
+				(TemporalRegion t)
+				(MaterialEntity z)
+				(s-depends_on_at x z t)))))
+
+(forall (x)
+	(iff
+		(ProcessBoundary x)
+		(exists (y)
+			(and
+				(Process y)
+				(temporal_part_of x y)
+				(forall (z)
+					(not (proper_temporal_part_of z x)))))))
+	
+(forall (x)
+	(if
+		(ProcessProfile x)
+		(exists (y)
+			(and
+				(Process y)
+				(process_profile_of x y)))))
+
+(forall (x y)
+	(iff
+		(has_history x y)
+		(history_of y x)))
+
+(forall (x y z)
+	(if 
+		(and 
+			(history_of x y)
+			(history_of x z)
+		(= y z))))
+				
+(forall (x)
+	(iff 
+		(TemporalRegion x)
+		(occurrent_part_of x time_R)
+		))
+		
+(forall (t)
+	(if	
+		(TemporalRegion t)
+		(occupies_temporalregion t t)))
+
+(forall (?i ?j) 
+	(if 
+		(and (TempInterval ?i) (TempInterval ?j))
+		(iff
+			(iv_precedes ?i ?j)
+			(exists (?k) 
+				(and 
+					(TempInterval ?k)
+					(meets ?i ?k ?j))))))
+
+(forall (?i ?j) 
+	(if 
+		(and (TempInterval ?i) (TempInterval ?j))
+		(iff
+			(iv_overlaps ?i ?j)
+			(exists (?k ?m ?n ?o ?p) 
+				(and 
+					(meets ?k ?m ?n ?o ?p)
+					(meets ?m ?j ?p)
+					(meets ?k ?i ?o) )))))
+
+(forall (?i ?j) 
+	(if 
+		(and (TempInterval ?i) (TempInterval ?j))
+		(iff
+			(iv_starts ?i ?j)
+			(exists (?k ?m ?n) 
+				(and 
+					(meets ?k ?i ?m ?n)
+					(meets ?k ?j ?n) )))))					
+					
+(forall (?i ?j) 
+	(if 
+		(and (TempInterval ?i) (TempInterval ?j))
+		(iff
+			(iv_during ?i ?j)
+			(exists (?k ?m ?n ?o)
+				(and 
+					(meets ?k ?m ?i ?n ?o)
+					(meets ?k ?j ?o) )))))					
+
+(forall (?i ?j) 
+	(if 
+		(and (TempInterval ?i) (TempInterval ?j))
+		(iff
+			(iv_finishes ?i ?j)
+			(exists (?k ?m ?n)
+				(and 
+					(meets ?k ?m ?i ?n)
+					(meets ?k ?j ?n) )))))										
+
+(forall (t)
+	(if 
+		(0DTemporalRegion t)
+		(exists (y z )
+			(and
+				 (TempInterval  y)
+				 (TempInterval  z)
+				 (meets_at y t z) 				 
+			))))
+
+(forall (x)
+	(if 
+		(0DTemporalRegion x)
+		(forall (y)
+			(not (occurrent_part_of y x))))) )
+	
+(forall (x)
+	(if
+		(1DTemporalRegion x)
+		(exists (y)
+			(and 
+				(TempInterval y)
+				(occurrent_part_of y x)))))
+
+(forall (?i) 
+	(if 
+		(TempInterval  ?i)
+		(exists (?j ?k) (meets ?j ?i ?k))))
+
+(forall (x y)
+	(if 
+		(and 
+			(TempInterval x)
+			(TempInterval y))
+		(iff 
+			(occurrent_part_of x y)
+			(or
+				(= x y)
+				(iv_starts x y)
+				(iv_during x y)
+				(iv_finishes x y)))))					
+
+(forall (x)
+	(iff 
+		(SpatiotemporalRegion x)
+		(occurrent_part_of x spaceTime)))
+
+(forall (x) 
+	(if 
+		(SpatiotemporalRegion x) 
+		(exists (t) 
+			(and 
+				(TemporalRegion t)
+				(occupies_temporalregion x t)))))
+			
+(forall (x y)
+	(if
+		(and
+			(SpatiotemporalRegion x)
+			(occurrent_part_of y x)
+		(SpatiotemporalRegion y))))
+
+(forall (x)
+	(if	
+		(SpatiotemporalRegion x)
+		(exists (y)
+			(and
+				(TemporalRegion y)
+				(temporally_projects_onto x y))))) 
+
+(forall (x)
+	(if	
+		(SpatiotemporalRegion x)
+		(exists (y t) 
+			(and 
+				(SpatialRegion y)
+				(TemporalRegion t) 
+				(spatially_projects_onto_at x y t))))
+
+(forall (x)
+	(if	
+		(SpatiotemporalRegion x1)
+		(occupies_spatiotemporalregion x x)))
+
+(forall (x)
+	(if
+		(Occurrent x)
+		(exists (y)
+			(and
+				(SpatiotemporalRegion y)
+				(occupies_spatiotemporalregion x y)))))
+
+(forall (x y)
+	(if
+		(occupies_spatiotemporalregion x y)
+		(and
+			(Occurrent x)
+			(SpatiotemporalRegion y))))
+			
+(forall (s r1 r2 t)
+	(if
+		(and
+			(SpatiotemporalRegion s)
+			(SpatialRegion r1)
+			(SpatialRegion r2)
+			(TemporalRegion t)
+			(spatially_projects_onto_at s r1 t)
+			(spatially_projects_onto_at s r2 t)
+		(= r1 r2))))	
+
+(forall (x1 x2 t1 t2)
+	(if 
+		(and 
+			(occurrent_part_of x1 x2)				
+			(occupies_temporalregion x1 t1)
+			(occupies_temporalregion x2 t2))
+		(occurrent_part_of t1 t2)))
+
+(forall (x t1 t2)
+	(if
+		(and
+			(SpatiotemporalRegion x)
+			(0DTemporalRegion t1)
+			(TemporalRegion t2)
+			(occurrent_part_of t1 t2)
+			(occupies_temporalregion x t2))
+		(exists (r)
+			(and
+				(SpatialRegion r)
+                (occupies_spatial_region_at x r t1)))))
+
+(forall (x)
+	(if 
+		(SpatiotemporalRegion x)
+		(occupies_spatiotemporalregion x x)))	
+
+(forall (x y)
+	(if 
+		(and
+		 	(0DTemporalRegion x)
+			(0DTemporalRegion y))
+			(iff
+				(preceded_by x y)
+				(exists (z)
+					(and
+						(TempInterval z)
+						(= y (begin_of z))
+						(= x (end_of z)))))))
+
+(forall (x1 x2)
+	(if 
+		(and
+		 	(1DTemporalRegion x1)
+			(1DTemporalRegion x2))
+			(iff
+				(preceded_by x1 x2)
+				(forall (y1 y2)
+					(if 
+						(and
+							(TempInterval y1)
+							(TempInterval y2)						
+							(occurrent_part_of y1 x1)
+							(occurrent_part_of y2 x2))						
+						(iv_precedes y2 y1))))))					
+
+(forall (x1 x2)
+	(if 
+		(and
+		 	(0DTemporalRegion x1)
+			(1DTemporalRegion x2))
+			(iff
+				(preceded_by x1 x2)
+				(preceded_by x1 (end_of x2)))))
+
+(forall (x1 x2)
+	(if 
+		(and
+		 	(1DTemporalRegion x1)
+			(0DTemporalRegion x2))
+			(iff
+				(preceded_by x1 x2)
+				(preceded_by (begin_of x1) x2))))
+
+(forall (x y)
+	(if 
+		(and
+		 	(TemporalRegion x)
+			(TemporalRegion y))
+		(iff
+			(precedes x y)
+			(preceded_by y x))))
+
+(forall (x y)
+	(if 
+		(and
+		 	(TemporalRegion x)
+			(0DTemporalRegion t1))
+		(iff
+			(begin_of t1 x)
+			(and 
+				(occurrent_part_of t1 x)
+				(forall (t2) 
+					(if 
+						(and
+							(0DTemporalRegion t2)								 
+							(precedes t2 t1))
+						(not (occurrent_part_of t2 x))))))))
+
+(forall (x y)
+	(if 
+		(and
+		 	(TemporalRegion x)
+			(0DTemporalRegion t1))
+		(iff
+			(end_of t1 x)
+			(and 
+				(occurrent_part_of t1 x)
+				(forall (t2) 
+					(if 
+						(and
+							(0DTemporalRegion t2)								 
+							(precedes t1  t2))
+						(not (occurrent_part_of t2 x))))))))
+
+(forall (x y)
+	(if 
+		(and
+		 	(TemporalRegion x)
+			(TemporalRegion y))
+		(iff
+			(immediately_preceded_by x y)
+			(exists (t)
+				(and 
+					(0DTemporalRegion t)
+					(begin_of t x)
+					(end_of t y))))))
+
+(forall (x y)
+	(if	
+		occupies_spatiotemporalregion x y)
+			(and	
+				(Occurrent x)
+				(SpatiotemporalRegion y)))
+
+(forall (x y z)
+	(if 
+		(and 
+			(occupies_spatiotemporalregion x y)
+			(occupies_spatiotemporalregion x z))
+		(= y z)))
+
+(forall (x r1 r2 t )
+	(if 
+		(and 
+			 (occupies_spatial_region_at x r1 t)			
+			 (occupies_spatial_region_at x r2 t))
+		(= r1 r2)))
+		
+(forall (x)
+	(if 
+		(SpatialRegion x)
+			(occupies_spatial_region_at x x t)))
+			
+(forall (x y z t)
+	(if
+		(and
+			(occupies_spatial_region_at x y t)
+			(continuant_part_of z x t)
+				(exists (w)
+					(and
+						(continuant_part_of w y t)
+						(occupies_spatial_region_at z w t))))))
+
+(forall (x r t)
+	(if	
+		 (occupies_spatial_region_at x r t) 
+		 (exists_at x t )))
+		 
+(forall (x y)
+	(iff
+		(occurs_in x y)
+		(and 
+			(or
+				(Process x)
+				(ProcessBoundary x))
+			(or 
+				(MaterialEntity y)
+				(ImmaterialEntity y))
+			(exists (r)
+				(and
+					(SpatiotemporalRegion r)
+					(occupies_spatiotemporalregion x r)
+					(forall (t)
+						(if
+							(and
+								(TemporalRegion t)
+								(exists_at x t)
+							(exists_at y t))
+				(exists (s s1)
+					(and
+						(SpatialRegion s)
+						(SpatialRegion s1)
+						(spatially_projects_onto_at x s t)
+						(occupies_spatial_region_at y s1 t)
+						(proper_continuant_part_of s s1 t)))))))))) 
+
+(forall (x t)
+	(iff
+		(occupies_temporalregion x t)
+		(and
+			(Occurrent x)
+			(TemporalRegion t)
+			(exists (s)
+				(SpatiotemporalRegion s)
+				(occupies_spatiotemporalregion x s)
+				(temporally_projects_onto s t)))))
+				
+(forall (x y)
+	(iff 
+		(process_profile_of x y)
+		(and
+			(proper_occurrent_part_of x y)
+			(exists (z t)
+				(and
+					(proper_occurrent_part_of z y)
+					(TemporalRegion t)
+					(occupies_temporalregion x t)
+					(occupies_temporalregion y t)
+					(occupies_spatiotemporalregion z t)
+					(forall (w)
+						(if
+							(occurrent_part_of w x)
+							(not (occurrent_part_of w z)))))))))
+						
+(forall (x t y)
+	(if 
+		(meets_at x t y)
+		(meets x y)))
+
+(forall (x y)
+	(if 
+		(meets x y)
+		(exists (t) 
+			(and 
+				(0DTemporalRegion t)
+				(meets_at x t y) ))))
+				
+(forall (x t y)
+	(if 
+		(meets_at x t y)
+		(and 
+			(= t (endOf x))
+			(= t (beginOf y))
+			)))
+			
+(forall (x t1 t2 y1 y2)
+	(if 
+		(and 
+			(meets_at x t1 y1)	
+			(meets_at x t2 y2))
+		(and 
+			(= (beginOf y1) (beginOf y2)) 
+			(= t1 t2))))			
+
+(forall (x1 x2 t1 t2)
+	(if 
+		(and 
+			(meets_at x1 t1 y)	
+			(meets_at x2 t2 y))
+		(and 
+			(= (endOf x1) (endOf x2))
+			(= t1 t2))))			
+			
+(not (meets))
+(forall (x) (not (meets x))) 
+(forall (x y) 
+	(if 
+		(meets x y)
+		(and 
+			(TempInterval x)
+			(TempInterval y))))
+	
+(forall (x y z ...)
+	(iff 
+		(meets x y z ...)
+		(and
+			(meets x y)
+			(meets y z ...))))
+
+(forall (i j k m)
+	(if 
+		(and 
+			(meets i k)
+			(meets j k)
+			(meets i m))
+		(meets j m)))
+
+(forall (?i ?j ?k ?m)
+	(if 
+		(and 
+			(meets ?i ?j) 
+			(meets ?k ?l))
+		(or 
+			(meets ?i ?l)
+			(exists (?n) 
+				(or 
+					(meets ?i ?n ?l)
+					(meets ?k ?n ?j))))))		
+					
+(forall (?i ?j) (not (meets ?i ?j ?i)))		
+
+(forall (?i ?j ?k ?m)
+	(if 
+		(meets ?i ?j ?k ?m)
+		(exists (?n)
+			(meets ?i ?n ?m))))		
+
+(forall (?i ?j ?k ?m)
+    (if
+        (and
+            (meets ?i ?j ?m)
+            (meets ?i ?k ?m))
+        (= ?j ?k)))
