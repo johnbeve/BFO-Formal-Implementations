@@ -301,7 +301,7 @@ all x all y all t(continuantOverlapAt(x,y,t) -> (exists z (all w(continuantPartO
 
 %A2.1.5 WEAK SUPPLEMENTATION 
 
-all x all y all t(continuantOverlapAt(x,y,t) -> (exists z continuantOverlapAt(z,x,t) & continuantOverlapAt(z,y,t) & all w(continuantOverlapAt(w,x,t) & continuantOverlapAt(w,y,t))-> w=z)).
+all x all y all t(continuantOverlapAt(x,y,t) -> (exists z (continuantOverlapAt(z,x,t) & continuantOverlapAt(z,y,t) & all w((continuantOverlapAt(w,x,t) & continuantOverlapAt(w,y,t))-> w=z)))). 
 
 %A2.1.6 UNIQUE PRODUCT 
 
